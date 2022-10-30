@@ -7,5 +7,5 @@ FilePath: \pytorch-auto-drive\configs\lane_detection\common\datasets\_utils.py
 Description: root dir
 '''
 CULANE_ROOT = '../../dataset/culane'
-TUSIMPLE_ROOT = 'configs/lane_detection/dataset/tusimple/train_set'
+TUSIMPLE_ROOT = '/root/workspace/data/tusimple'
 LLAMAS_ROOT = '../../dataset/llamas'
