@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "main_landet.py", line 11, in <module>
+    from utils.args import parse_arg_cfg, read_config, map_states, add_shortcuts, cmd_dict
+  File "/workspace/pytorch-auto-drive_no_checkpoints/utils/__init__.py", line 1, in <module>
+    from . import datasets
+  File "/workspace/pytorch-auto-drive_no_checkpoints/utils/datasets/__init__.py", line 11, in <module>
+    from .video import VideoLoader
+  File "/workspace/pytorch-auto-drive_no_checkpoints/utils/datasets/video.py", line 2, in <module>
+    from mmcv import VideoReader
+  File "/opt/conda/lib/python3.7/site-packages/mmcv/__init__.py", line 4, in <module>
+    from .fileio import *
+  File "/opt/conda/lib/python3.7/site-packages/mmcv/fileio/__init__.py", line 4, in <module>
+    from .io import dump, load, register_handler
+  File "/opt/conda/lib/python3.7/site-packages/mmcv/fileio/io.py", line 4, in <module>
+    from ..utils import is_list_of, is_str
+  File "/opt/conda/lib/python3.7/site-packages/mmcv/utils/__init__.py", line 35, in <module>
+    from .env import collect_env
+  File "/opt/conda/lib/python3.7/site-packages/mmcv/utils/env.py", line 8, in <module>
+    import cv2
+ImportError: libGL.so.1: cannot open shared object file: No such file or directory

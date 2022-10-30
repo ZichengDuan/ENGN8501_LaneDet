@@ -1,0 +1,55 @@
+Loaded torchvision ImageNet pre-trained weights V1.
+Not using distributed mode
+cuda
+/workspace/pytorch-auto-drive/utils/models/lane_detection/laneatt.py:22: UserWarning: Can't complie line nms op for LaneATT. Set verbose=True for load in /utils/csrc/apis.py L9 for details.
+[1, 15] training loss: 0.5996
+[1, 15] loss label: 0.2690
+[1, 15] loss curve: 0.4438
+[1, 15] loss seg: 0.1718
+[1, 15] valid portion: 0.9375
+[1, 31] training loss: 0.3936
+[1, 31] loss label: 0.2430
+[1, 31] loss curve: 0.2583
+[1, 31] loss seg: 0.1480
+[1, 31] valid portion: 1.0000
+[1, 47] training loss: 0.3380
+[1, 47] loss label: 0.2229
+[1, 47] loss curve: 0.2190
+[1, 47] loss seg: 0.1289
+[1, 47] valid portion: 1.0000
+[1, 63] training loss: 0.3283
+[1, 63] loss label: 0.2145
+[1, 63] loss curve: 0.2179
+[1, 63] loss seg: 0.1186
+[1, 63] valid portion: 1.0000
+[1, 79] training loss: 0.3035
+[1, 79] loss label: 0.2069
+[1, 79] loss curve: 0.2025
+[1, 79] loss seg: 0.1072
+[1, 79] valid portion: 1.0000
+[1, 95] training loss: 0.2832
+[1, 95] loss label: 0.2037
+[1, 95] loss curve: 0.1873
+[1, 95] loss seg: 0.1007
+[1, 95] valid portion: 1.0000
+[1, 111] training loss: 0.2828
+[1, 111] loss label: 0.1946
+[1, 111] loss curve: 0.1892
+[1, 111] loss seg: 0.0988
+[1, 111] valid portion: 1.0000
+[1, 127] training loss: 0.2775
+[1, 127] loss label: 0.1987
+[1, 127] loss curve: 0.1866
+[1, 127] loss seg: 0.0947
+[1, 127] valid portion: 1.0000
+[1, 143] training loss: 0.2639
+[1, 143] loss label: 0.1960
+[1, 143] loss curve: 0.1754
+[1, 143] loss seg: 0.0919
+[1, 143] valid portion: 1.0000
+[1, 159] training loss: 0.2546
+[1, 159] loss label: 0.1913
+[1, 159] loss curve: 0.1683
+[1, 159] loss seg: 0.0895
+[1, 159] valid portion: 1.0000
+Epoch time: 50.08s
