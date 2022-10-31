@@ -14,7 +14,7 @@ with import_from('./'):
 train = dict(
     exp_name='resnet18_bezierlanenet_tusimple_winter-aug4',
     workers=8,
-    batch_size=16,
+    batch_size=18,
     checkpoint=None,
     # Device args
     world_size=0,
@@ -30,7 +30,7 @@ train = dict(
     num_classes=None,
     num_epochs=400,
     collate_fn='pair_collate_fn',
-    extra_samples=4
+    extra_samples=2
 )
 
 test = dict(
