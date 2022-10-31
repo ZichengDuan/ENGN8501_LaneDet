@@ -15,7 +15,9 @@ class attention(nn.Module):
         if not mid_channels:
             mid_channels=in_channels
         #self.make_qkv=nn.Conv2d(in_channels,3*in_channels,3,stride=1,padding=1)
-        self.make_qkv=nn.Conv2d(in_channels,3*in_channels,11,stride=1,padding=5)
+        self.make_qkv=nn.Sequential(nn.Conv2d(in_channels,3*in_channels,1,stride=1,padding=0),
+                                    nn.Conv2d(3*in_channels,3*in_channels,11,stride=1,padding=5,groups=3*in_channels))
+
         #self.make_qkv=nn.Conv2d(in_channels,3*in_channels,7,stride=1,padding=)
         #self.make_q=nn.Conv2d(in_channels,in_channels):
         self.head=8
@@ -23,7 +25,7 @@ class attention(nn.Module):
         #self.linear=nn.Sequential(nn.Conv2d(in_channels,in_channels,1,stride=1,padding=0),
         #                          nn.Conv2d(in_channels,4*in_channels,1,stride=1,padding=0),
         #                          nn.Conv2d(4*in_channels,in_channels,1,stride=1,padding=0))
-        self.temp=int( math.sqrt(in_channels//self.head))
+        self.temp=int(math.sqrt(in_channels//self.head))
         self.softmax=nn.Softmax(dim=-1)
     def forward(self,x):
         # torch.Size([20, 256, 23, 40])
@@ -72,7 +74,7 @@ class BezierLaneNet(BezierBaseNet):
                                          kernel_size=1, bias=True, padding=0)
         self.segmentation_head = MODELS.from_dict(aux_seg_head_cfg)
         self.attn1=attention(256)
-        #print("model is ",self)
+        print("model is ",self)
         #self.attn2=attention(256)
     def forward(self, x):
         # Return shape: B x Q, B x Q x N x 2
@@ -96,8 +98,8 @@ class BezierLaneNet(BezierBaseNet):
         #print("here x.shape",x.shape)
         #print("self.dilated_blocks",self.dilated_blocks)
         if self.dilated_blocks is not None:
-            x = self.dilated_blocks(x)
-        #x=self.attn2(x)
+           x = self.dilated_blocks(x)
+        #`x=self.attn2(x)
         with autocast(False):  # TODO: Support fp16 like mmcv
             x = self.simple_flip_2d(x.float())
         #print("x.shape",x.shape)
