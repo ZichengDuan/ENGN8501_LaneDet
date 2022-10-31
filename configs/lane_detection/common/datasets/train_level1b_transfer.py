@@ -36,6 +36,10 @@ train_augmentation = dict(
             std=[0.229, 0.224, 0.225],
             normalize_target=True,
             ignore_x=None
+        ),
+        
+        dict(
+            name='RandomMasking_TwoImages'
         )
     ]
 )
