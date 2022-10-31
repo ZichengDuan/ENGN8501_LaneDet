@@ -1,8 +1,0 @@
-resnet34_bezierlanenet_tusimple-aug2: 0.9558540661052278
-resnet18_bezierlanenet_tusimple-aug2: 0.9510469086987715
-resnet18_bezierlanenet_tusimple-aug2: 0.9519942187874385
-resnet18_bezierlanenet_tusimple-aug3: 0.9473282753072435
-resnet18_bezierlanenet_tusimple_winter-aug2: 0.947845524802294
-resnet18_bezierlanenet_tusimple_winter-aug2: 0.34586606928896696
-resnet18_bezierlanenet_tusimple_winter-aug2: 0.34456625928588613
-resnet18_bezierlanenet_tusimple_winter-aug2: 0.9530442299133826

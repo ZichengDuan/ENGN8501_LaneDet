@@ -1,108 +1,66 @@
-# PytorchAutoDrive: Framework for self-driving perception
+# fast-neural-style :city_sunrise: :rocket:
 
+This repository contains a pytorch implementation of an algorithm for artistic style transfer. The algorithm can be used to mix the content of an image with the style of another image. For example, here is a photograph of a door arch rendered in the style of a stained glass painting.
 
-*PytorchAutoDrive* is a **pure Python** framework includes semantic segmentation models, lane detection models based on **PyTorch**. Here we provide full stack supports from research (model training, testing, fair benchmarking by simply writing configs) to application (visualization, model deployment).
+The model uses the method described in [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](https://arxiv.org/abs/1603.08155) along with [Instance Normalization](https://arxiv.org/pdf/1607.08022.pdf). The saved-models for examples shown in the README can be downloaded from [here](https://www.dropbox.com/s/lrvwfehqdcxoza8/saved_models.zip?dl=0).
 
-**Paper:** [Rethinking Efficient Lane Detection via Curve Modeling](https://arxiv.org/abs/2203.02431) (CVPR 2022)
+<p align="center">
+    <img src="images/style-images/mosaic.jpg" height="200px">
+    <img src="images/content-images/amber.jpg" height="200px">
+    <img src="images/output-images/amber-mosaic.jpg" height="440px">
+</p>
 
-**Poster:** [PytorchAutoDrive: Toolkit & Fair Benchmark for Autonomous Driving Research](https://drive.google.com/file/d/14EgcwPnKvAZJ1aWqBv6W9Msm666Wqi5a/view?usp=sharing) (PyTorch Developer Day 2021)
+## Requirements
 
-*This repository is under active development, results with models uploaded are stable. For legacy code users, please check [deprecations](https://github.com/voldemortX/pytorch-auto-drive/issues/14) for changes.*
+The program is written in Python, and uses [pytorch](http://pytorch.org/), [scipy](https://www.scipy.org). A GPU is not necessary, but can provide a significant speed up especially for training a new model. Regular sized images can be styled on a laptop or desktop using saved models.
 
-**A demo video from ERFNet:**
+## Usage
 
-https://user-images.githubusercontent.com/32259501/148680744-a18793cd-f437-461f-8c3a-b909c9931709.mp4
-
-## Highlights
-
-Various methods on a wide range of backbones, **config** based implementations, **modulated** and **easily understood** codes, image/keypoint loading, transformations and **visualizations**, **mixed precision training**, tensorboard logging and **deployment support** with ONNX and TensorRT.
-
-Models from this repo are faster to train (**single card trainable**) and often have better performance than other implementations, see [wiki](https://github.com/voldemortX/pytorch-auto-drive/wiki/Notes) for reasons and technical specification of models.
-
-## Supported datasets: 
-
-| Task | Dataset |
-| :---: | :---: |
-| semantic segmentation | PASCAL VOC 2012 |
-| semantic segmentation | Cityscapes |
-| semantic segmentation | GTAV* |
-| semantic segmentation | SYNTHIA* |
-| lane detection | CULane |
-| lane detection | TuSimple |
-| lane detection | LLAMAS |
-| lane detection | BDD100K (*In progress*) |
-
-\* The UDA baseline setup, with Cityscapes *val* set as validation.
-
-## Supported models:
-
-| Task | Backbone | Model/Method |
-| :---: | :---: | :---: |
-| semantic segmentation | ResNet-101 | [FCN](/configs/semantic_segmentation/fcn) |
-| semantic segmentation | ResNet-101 | [DeeplabV2](https://arxiv.org/abs/1606.00915) |
-| semantic segmentation | ResNet-101 | [DeeplabV3](https://arxiv.org/abs/1706.05587) |
-| semantic segmentation | - | [ENet](https://arxiv.org/abs/1606.02147) |
-| semantic segmentation | - | [ERFNet](/configs/semantic_segmentation/erfnet) |
-| lane detection | ENet, ERFNet, VGG16, ResNets (18, 34, 50, 101), MobileNets (V2, V3-Large), RepVGGs (A0, A1, B0, B1g2, B2), Swin (Tiny) | [Baseline](/configs/lane_detection/baseline) |
-| lane detection | ERFNet, VGG16, ResNets (18, 34, 50, 101), RepVGGs (A1) | [SCNN](https://arxiv.org/abs/1712.06080) |
-| lane detection | ResNets (18, 34, 50, 101), MobileNets (V2, V3-Large), ERFNet | [RESA](https://arxiv.org/abs/2008.13719) |
-| lane detection | ERFNet, ENet | [SAD](https://arxiv.org/abs/1908.00821) ([*Postponed*](https://github.com/voldemortX/pytorch-auto-drive/wiki/Notes)) |
-| lane detection | ERFNet | [PRNet](http://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123630698.pdf) (*In progress*) |
-| lane detection | ResNets (18, 34, 50, 101), ResNet18-reduced | [LSTR](https://arxiv.org/abs/2011.04233) |
-| lane detection | ResNets (18, 34) | [LaneATT](https://arxiv.org/abs/2010.12035) |
-| lane detection | ResNets (18, 34) | [BézierLaneNet](/configs/lane_detection/bezierlanenet) |
-
-## Model Zoo
-
-We provide solid results (average/best/detailed), training time, shell scripts and trained models available for download in [MODEL_ZOO.md](docs/MODEL_ZOO_J.md).
-
-## Installation
-
-Please prepare the environment and code with [INSTALL.md](docs/INSTALL.md). Then follow the instructions in [DATASET.md](docs/DATASET.md) to set up datasets. 
-
-## Getting Started
-
-Get started with [LANEDETECTION.md](docs/LANEDETECTION.md) for lane detection.
-
-Get started with [SEGMENTATION.md](docs/SEGMENTATION.md) for semantic segmentation.
-
-## Visualization Tools
-
-Refer to [VISUALIZATION.md](docs/VISUALIZATION.md) for a visualization & inference tutorial, for image and video inputs.
-
-## Benchmark Tools
-
-Refer to [BENCHMARK.md](docs/BENCHMARK.md) for a benchmarking tutorial, including FPS test, FLOPs & memory count for each supported model.
-
-## Deployment
-
-Refer to [DEPLOY.md](docs/DEPLOY.md) for ONNX and TensorRT deployment supports.
-
-## Advanced Tutorial
-
-Checkout [ADVANCED_TUTORIAL.md](docs/ADVANCED_TUTORIAL.md) for advanced use cases and how to code in PytorchAutoDrive.
-
-## Contributing
-
-Refer to [CONTRIBUTING.md](/docs/CONTRIBUTING.md) for contribution guides.
-
-## Citation
-
-If you feel this framework substantially helped your research or you want a reference when using our results, please cite the following paper that made the official release of PytorchAutoDrive:
+Stylize image
 
 ```
-@inproceedings{feng2022rethinking,
-  title={Rethinking efficient lane detection via curve modeling},
-  author={Feng, Zhengyang and Guo, Shaohua and Tan, Xin and Xu, Ke and Wang, Min and Ma, Lizhuang},
-  booktitle={Computer Vision and Pattern Recognition},
-  year={2022}
-}
+python neural_style/neural_style.py eval --content-image </path/to/content/image> --model </path/to/saved/model> --output-image </path/to/output/image> --cuda 0
 ```
 
-## Credits:
+- `--content-image`: path to content image you want to stylize.
+- `--model`: saved model to be used for stylizing the image (eg: `mosaic.pth`)
+- `--output-image`: path for saving the output image.
+- `--content-scale`: factor for scaling down the content image if memory is an issue (eg: value of 2 will halve the height and width of content-image)
+- `--cuda`: set it to 1 for running on GPU, 0 for CPU.
+- `--mps`: set it to 1 for running on macOS GPU
 
-PytorchAutoDrive is maintained by Zhengyang Feng ([voldemortX](https://github.com/voldemortX)) and Shaohua Guo ([cedricgsh](https://github.com/cedricgsh)).
+Train model
 
-Contributors (GitHub ID): [kalkun](https://github.com/kalkun), [LittleJohnKhan](https://github.com/LittleJohnKhan), [francis0407](https://github.com/francis0407)
+```bash
+python neural_style/neural_style.py train --dataset </path/to/train-dataset> --style-image </path/to/style/image> --save-model-dir </path/to/save-model/folder> --epochs 2 --cuda 1
+```
 
-People who sponsored us (e.g., with hardware): [Lizhuang Ma](https://dmcv.sjtu.edu.cn/people/), [Xin Tan](https://tanxincs.github.io/TAN-Xin.github.io/), Junshu Tang ([junshutang](https://github.com/junshutang)), Fengqi Liu ([FengqiLiu1221](https://github.com/FengqiLiu1221)) 
+There are several command line arguments, the important ones are listed below
+
+- `--dataset`: path to training dataset, the path should point to a folder containing another folder with all the training images. I used COCO 2014 Training images dataset [80K/13GB] [(download)](https://cocodataset.org/#download).
+- `--style-image`: path to style-image.
+- `--save-model-dir`: path to folder where trained model will be saved.
+- `--cuda`: set it to 1 for running on GPU, 0 for CPU.
+- `--mps`: set it to 1 for running on macOS GPU
+
+Refer to `neural_style/neural_style.py` for other command line arguments. For training new models you might have to tune the values of `--content-weight` and `--style-weight`. The mosaic style model shown above was trained with `--content-weight 1e5` and `--style-weight 1e10`. The remaining 3 models were also trained with similar order of weight parameters with slight variation in the `--style-weight` (`5e10` or `1e11`).
+
+## Models
+
+Models for the examples shown below can be downloaded from [here](https://www.dropbox.com/s/lrvwfehqdcxoza8/saved_models.zip?dl=0) or by running the script `download_saved_models.py`.
+
+<div align='center'>
+  <img src='images/content-images/amber.jpg' height="174px">		
+</div>
+
+<div align='center'>
+  <img src='images/style-images/mosaic.jpg' height="174px">
+  <img src='images/output-images/amber-mosaic.jpg' height="174px">
+  <img src='images/output-images/amber-candy.jpg' height="174px">
+  <img src='images/style-images/candy.jpg' height="174px">
+  <br>
+  <img src='images/style-images/rain-princess-cropped.jpg' height="174px">
+  <img src='images/output-images/amber-rain-princess.jpg' height="174px">
+  <img src='images/output-images/amber-udnie.jpg' height="174px">
+  <img src='images/style-images/udnie.jpg' height="174px">
+</div>
