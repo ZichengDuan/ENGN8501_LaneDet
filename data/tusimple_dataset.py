@@ -18,9 +18,17 @@ class TusimpleDataset(BaseDataset):
         """
         BaseDataset.__init__(self, opt)
         self.opt = opt
-        self.root = '/root/workspace/data/tusimple/train_set'
-        with open(os.path.join(self.root, 'lists', 'train.txt'), 'r') as f:
-            self.A_paths = list(map(lambda x: os.path.join(self.root, 'clips', x[:x.find(' ')]+'.jpg'), f.readlines()))
+        
+        name = "culane"
+        if name == "culane":
+            self.root = '/root/workspace/data/culane'
+            with open(os.path.join(self.root, 'lists', 'train.txt'), 'r') as f:
+                self.A_paths = list(map(lambda x: os.path.join(self.root,  x[:x.find(' ')]+'.jpg'), f.readlines()))
+        else:
+            self.root = '/root/workspace/data/tusimple/train_set'
+            with open(os.path.join(self.root, 'lists', 'train.txt'), 'r') as f:
+                self.A_paths = list(map(lambda x: os.path.join(self.root, 'clips', x[:x.find(' ')]+'.jpg'), f.readlines()))
+            
         # self.A_paths = sorted(make_dataset(opt.dataroot, opt.max_dataset_size))
         input_nc = self.opt.output_nc if self.opt.direction == 'BtoA' else self.opt.input_nc
         self.transform = get_transform(opt, grayscale=(input_nc == 1))
