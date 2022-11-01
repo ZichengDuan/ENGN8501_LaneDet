@@ -19,7 +19,7 @@ class TusimpleDataset(BaseDataset):
         BaseDataset.__init__(self, opt)
         self.opt = opt
 #         self.root = '/root/TuSimple/train_set'
-        self.root = self.opt.tusimpleABSroot
+        self.root = self.opt.dataroot
         with open(os.path.join(self.root, 'lists', 'train.txt'), 'r') as f:
             self.A_paths = list(map(lambda x: os.path.join(self.root, 'clips', x[:x.find(' ')]+'.jpg'), f.readlines()))
         # self.A_paths = sorted(make_dataset(opt.dataroot, opt.max_dataset_size))
@@ -44,3 +44,4 @@ class TusimpleDataset(BaseDataset):
     def __len__(self):
         """Return the total number of images in the dataset."""
         return len(self.A_paths)
+
