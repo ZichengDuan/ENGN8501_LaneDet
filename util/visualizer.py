@@ -54,7 +54,7 @@ def save_images(webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_w
     if use_wandb:
         wandb.log(ims_dict)
         
-def save_images_tusimple(webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_wandb=False):
+def save_images_extract(root, webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_wandb=False):
     """Save images to the disk.
 
     Parameters:
@@ -66,8 +66,9 @@ def save_images_tusimple(webpage, visuals, image_path, aspect_ratio=1.0, width=2
 
     This function will save images stored in 'visuals' to the HTML file specified by 'webpage'.
     """
+    len_root = len(root.split('/'))
     image_dir = webpage.get_image_dir()
-    img_path = image_path[0].split('/')[6:]
+    img_path = image_path[0].split('/')[len_root:]
     name = '/'.join(img_path)
 
     webpage.add_header(name)
