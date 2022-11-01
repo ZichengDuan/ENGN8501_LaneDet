@@ -64,6 +64,8 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
                 target = {'keypoints': self.beziers[index]}
             if self.transfer_image_dir is not None:
                 transfer_img = Image.open(self.transfered_images[index]).convert('RGB')
+        # crop the image for garauntee two images will be same
+        img, transfer_img = self._pre_process(img, transfer_img)
         # Transforms
         if self.transforms is not None:
             if self.transfer_image_dir is None or self.test != 0:
@@ -136,6 +138,21 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
 
         return target
     
+    def _pre_process(self, img0, img1):
+        img_list = [img0, img1]
+        w0, h0 = img0.size 
+        w1, h1 = img1.size 
+        if w0 != w1:
+            idx = np.argmax(np.array([w0, w1]))
+            diff = abs(w0 - w1)
+            img_list[idx] = img_list[idx].crop((diff, 0, *img_list[idx].size))
+        if h0 != h1:
+            idx = np.argmax(np.array([h0, h1]))
+            diff = abs(h0 - h1)
+            img_list[idx] = img_list[idx].crop((0, diff, *img_list[idx].size))
+        return img_list[0], img_list[1]
+            
+    
 
 @DATASETS.register()
 class TuSimpleAsBezier_style(_BezierLaneDataset_style):
@@ -159,4 +176,28 @@ class TuSimpleAsBezier_style(_BezierLaneDataset_style):
         else:
             self.transfer_image_dir = None
             warnings.warn("No style setting, the dataset will act as same as TuSimpleAsBezier")
-            
+
+@DATASETS.register()
+class LLAMAS_AsBezier_style(_BezierLaneDataset_style):
+    colors = [
+        [0, 0, 0],  # background
+        [0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0],
+        [0, 0, 0]  # ignore
+    ]
+
+    def init_dataset(self, root):
+        self.image_dir = os.path.join(root, 'color_images')
+        self.bezier_labels_dir = os.path.join(root, 'bezier_labels')
+        self.mask_dir = os.path.join(root, 'laneseg_labels')
+        self.output_prefix = './output'
+        self.output_suffix = '.lines.txt'
+        self.image_suffix = '.png'
+        if not os.path.exists(self.output_prefix):
+            os.makedirs(self.output_prefix)
+        if self.style == 'winter':
+            self.transfer_image_dir = os.path.join(root, 'winter_style')
+        elif self.style == 'comic':
+            self.transfer_image_dir = os.path.join(root, 'comic_style')
+        else:
+            self.transfer_image_dir = None
+            warnings.warn("No style setting, the dataset will act as same as LLAMAS_AsBezier")

@@ -15,9 +15,9 @@ from importmagician import import_from
 with import_from('./'):
     from configs.lane_detection.common.datasets._utils import TUSIMPLE_ROOT as base
 root = os.path.join(base, 'lists')
-old_file_names = ['list6_train.txt', 'list6_val.txt', 'list6_val.txt', 'list_test.txt', 'augmentation_gt.txt']  # 6 lanes (actually <=5)
+old_file_names = ['list6_train.txt', 'list6_val.txt', 'list6_val.txt', 'list_test.txt']  # 6 lanes (actually <=5)
 # old_file_names = ['list_train.txt', 'list_val.txt', 'list_val.txt', 'list_test.txt']  # 4 lanes
-new_file_names = ['train.txt', 'valfast.txt', 'val.txt', 'test.txt', 'train_augment.txt']
+new_file_names = ['train.txt', 'valfast.txt', 'val.txt', 'test.txt']
 for i in range(len(old_file_names)):
     file_name = os.path.join(root, old_file_names[i])
     with open(file_name, 'r') as f:

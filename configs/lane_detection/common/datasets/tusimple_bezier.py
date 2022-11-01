@@ -14,6 +14,6 @@ dataset = dict(
     root=TUSIMPLE_ROOT,
     order=3,
     aux_segmentation=True,
-    have_aug=True,
+    have_aug=False,
     aug_rate=0.2
 )

@@ -12,7 +12,7 @@ with import_from('./'):
 
 
 train = dict(
-    exp_name='resnet18_bezierlanenet_tusimple-aug2',
+    exp_name='resnet18_bezierlanenet_tusimple-largeconv',
     workers=8,
     batch_size=20,
     checkpoint=None,
@@ -33,10 +33,10 @@ train = dict(
 )
 
 test = dict(
-    exp_name='resnet18_bezierlanenet_tusimple-aug2',
+    exp_name='resnet18_bezierlanenet_tusimple-largeconv',
     workers=0,
     batch_size=1,
-    checkpoint='./checkpoints/resnet18_bezierlanenet_tusimple-aug2/model.pt',
+    checkpoint='./checkpoints/resnet18_bezierlanenet_tusimple-largeconv/model.pt',
     # Device args
     device='cuda',
 

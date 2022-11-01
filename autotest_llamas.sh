@@ -2,7 +2,7 @@
 echo experiment name: $1
 echo status: $2
 echo save dir: $3
-data_dir=../../../../dataset/llamas/labels/valid
+data_dir=/root/datasets/llamas/valid
 cd tools/llamas_evaluation/
 
 if [ "$2" = "val" ]; then
