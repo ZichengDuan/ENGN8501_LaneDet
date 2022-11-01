@@ -2,6 +2,7 @@ from .segmentation import PASCAL_VOC_Segmentation, CityscapesSegmentation, SYNTH
 from .lane_as_segmentation import TuSimpleAsSegmentation, CULaneAsSegmentation, LLAMAS_AsSegmentation
 from .lane_as_bezier import TuSimpleAsBezier, CULaneAsBezier, LLAMAS_AsBezier, Curvelanes_AsBezier
 from .lane_as_bezier_style import TuSimpleAsBezier_style
+from .lane_as_bezier_style import CULaneAsBezier_style
 from .tusimple import TuSimple
 from .tusimple_vis import TuSimpleVis
 from .culane import CULane

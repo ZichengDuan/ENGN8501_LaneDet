@@ -63,13 +63,17 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
             else:
                 target = {'keypoints': self.beziers[index]}
             if self.transfer_image_dir is not None:
-                transfer_img = Image.open(self.transfered_images[index]).convert('RGB')
+                transfer_img = Image.open(self.transfered_images[index]).convert('RGB').resize((img.size[0], img.size[1]))
         # Transforms
         if self.transforms is not None:
             if self.transfer_image_dir is None or self.test != 0:
                 img, target = self.transforms(img, target)
             else:
+                # print("========dzcdzcdzdc=======")
+                # print(self.images[index])
+                # print(self.transfered_images[index])
                 img, transfer_img, target = self.transforms(img, transfer_img, target)
+                # img, transfer_img, target = self.transforms(img, transfer_img)
 
         if self.test == 0:
             target = self._post_process(target)
@@ -159,4 +163,30 @@ class TuSimpleAsBezier_style(_BezierLaneDataset_style):
         else:
             self.transfer_image_dir = None
             warnings.warn("No style setting, the dataset will act as same as TuSimpleAsBezier")
-            
+
+
+# CULane
+@DATASETS.register()
+class CULaneAsBezier_style(_BezierLaneDataset_style):
+    colors = [
+        [0, 0, 0],  # background
+        [0, 255, 0], [0, 0, 255], [255, 0, 0], [255, 255, 0],
+        [0, 0, 0]  # ignore
+    ]
+
+    def init_dataset(self, root):
+        self.image_dir = root
+        self.bezier_labels_dir = os.path.join(root, 'bezier_labels')
+        self.mask_dir = os.path.join(root, 'laneseg_label_w16')
+        self.output_prefix = './output'
+        self.output_suffix = '.lines.txt'
+        self.image_suffix = '.jpg'
+        if not os.path.exists(self.output_prefix):
+            os.makedirs(self.output_prefix)
+        if self.style == 'winter':
+            self.transfer_image_dir = os.path.join(root, 'winter_style')
+        elif self.style == 'summer':
+            self.transfer_image_dir = os.path.join(root, 'summer_style')
+        else:
+            self.transfer_image_dir = None
+            warnings.warn("No style setting, the dataset will act as same as TuSimpleAsBezier")

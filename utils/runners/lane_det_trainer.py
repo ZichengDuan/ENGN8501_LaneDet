@@ -42,6 +42,7 @@ class LaneDetTrainer(BaseTrainer):
                 # append aug_dics in origin_idcs
                 origin_idcs.extend(aug_dics)
                 self.train_sampler = torch.utils.data.SubsetRandomSampler(origin_idcs)
+                
                 self.dataloader = torch.utils.data.DataLoader(dataset=self.dataset,
                                                               batch_size=self._cfg['batch_size'],
                                                               collate_fn=self.collate_fn,
@@ -51,11 +52,14 @@ class LaneDetTrainer(BaseTrainer):
                 loss_num_steps = int(len(self.dataloader) / 10) if len(self.dataloader) > 10 else 1
                 
             time_now = time.time()
+            
             for i, data in enumerate(self.dataloader, 0):
                 if self._cfg['seg']:
                     inputs, labels, existence = data
                     inputs, labels, existence = inputs.to(self.device), labels.to(self.device), existence.to(self.device)
                 else:
+                    # print(data[0].shape)
+                    # break
                     inputs, labels = data
                     inputs = inputs.to(self.device)
                     if self._cfg['collate_fn'] is None:

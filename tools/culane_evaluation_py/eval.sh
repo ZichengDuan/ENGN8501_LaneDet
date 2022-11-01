@@ -1,6 +1,6 @@
 #!/bin/bash
 root=../../
-data_dir=../../../../dataset/culane/
+data_dir=/root/workspace/data/culane/
 exp=$1
 detect_dir=../../output/
 
