@@ -54,7 +54,7 @@ def save_images(webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_w
     if use_wandb:
         wandb.log(ims_dict)
         
-def save_images_extract(root, webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_wandb=False):
+def save_images_extra(root, webpage, visuals, image_path, aspect_ratio=1.0, width=256, use_wandb=False):
     """Save images to the disk.
 
     Parameters:
