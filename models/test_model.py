@@ -26,6 +26,8 @@ class TestModel(BaseModel):
         opt, _ = parser.parse_known_args()
         if getattr(opt, 'tusimple', False):
             parser.set_defaults(dataset_mode='tusimple')
+        elif getattr(opt, 'llamas', False):
+            parser.set_defaults(dataset_mode='llamas')
         else:
             parser.set_defaults(dataset_mode='single')
         parser.add_argument('--model_suffix', type=str, default='', help='In checkpoints_dir, [epoch]_net_G[model_suffix].pth will be loaded as the generator.')
