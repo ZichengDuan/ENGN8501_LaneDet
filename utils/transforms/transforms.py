@@ -274,20 +274,24 @@ class RandomMasking_TwoImages(object):
     '''
     
     def __init__(self, mean=[0.4914, 0.4822, 0.4465]):
-        self.probability = 0.5
+        self.probability = 0.6
         self.mean = torch.tensor(mean).view(3, 1, 1)
         # self.sl = sl
         # self.sh = sh
         # self.r1 = r1
-        self.line_num = 5
-        self.line_width = 10
+        # self.line_num = 5
+        # self.line_width = 10
     
     def mask(self, img, seed):
+        
+        self.line_num = np.random.randint(3,7)
+        self.line_width = np.random.randint(8,14)
+        
         h = img.size()[1]
         w = img.size()[2]
         
-        inter_h = h // (self.line_num + 1)  # devide into self.line_num + 1 regions
-        inter_w = w // (self.line_num + 1)
+        inter_h = h // (self.line_num + 1) + np.random.randint(-40, 40)  # devide into self.line_num + 1 regions
+        inter_w = w // (self.line_num + 1) + np.random.randint(-40, 40)
         
         if seed > self.probability:
         
