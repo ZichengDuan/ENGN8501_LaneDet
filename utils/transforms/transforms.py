@@ -224,42 +224,40 @@ class RandomMasking(object):
     '''
     
     def __init__(self, mean=[0.4914, 0.4822, 0.4465]):
-        self.probability = 0.5
-        self.mean = mean
-        # self.sl = sl
-        # self.sh = sh
-        # self.r1 = r1
-        self.line_num = 5
-        self.line_width = 10
+        self.probability = 0.6
+        self.mean = torch.tensor(mean).view(3, 1, 1)
+        self.line_num = 0
+        self.line_width = 0
+        self.h_inter = 0
+        self.w_inter = 0
+        self.line_num = 0
+        self.line_width = 0
     
-    def mask(self, img, target):
+    def mask(self, img, seed):
         h = img.size()[1]
         w = img.size()[2]
         
-        inter_h = h / (self.line_num + 1)  # devide into self.line_num + 1 regions
-        inter_w = w / (self.line_num + 1)
+        inter_h = h // (self.line_num + 1) + self.h_inter  # devide into self.line_num + 1 regions
+        inter_w = w // (self.line_num + 1) + self.w_inter
         
-        if random.uniform(0, 1) > self.probability:
+        if seed > self.probability:
         
             for i in range(self.line_num):
-                img[0, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[0]
-                img[1, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[1]
-                img[2, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[2]
-            
-            # img[0, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[0]
-            # img[1, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[1]
-            # img[2, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[2]
+                img[:, slice((i + 1) * inter_h - self.line_width // 2, (i + 1) * inter_h + self.line_width // 2), :] = self.mean
         else:
             for i in range(self.line_num): 
-                img[0, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[0]
-                img[1, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[1]
-                img[2, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[2]
-        return img, target
+                img[:, : ,slice((i + 1) * inter_w - self.line_width // 2, (i + 1) * inter_w + self.line_width // 2)] = self.mean
+        return img
  
     def __call__(self, img, target):
-        
-        img, target = self.mask(img, target)
+        seed =  random.uniform(0, 1)
+        self.h_inter = np.random.randint(-40, 40)
+        self.w_inter = np.random.randint(-40, 40)
+        self.line_num = np.random.randint(3,7)
+        self.line_width = np.random.randint(8,14)
+        img, target = self.mask(img, seed)
         return img, target
+    
     
 @TRANSFORMS.register()
 class RandomMasking_TwoImages(object):
@@ -276,40 +274,34 @@ class RandomMasking_TwoImages(object):
     def __init__(self, mean=[0.4914, 0.4822, 0.4465]):
         self.probability = 0.6
         self.mean = torch.tensor(mean).view(3, 1, 1)
-        # self.sl = sl
-        # self.sh = sh
-        # self.r1 = r1
-        # self.line_num = 5
-        # self.line_width = 10
+        self.line_num = 0
+        self.line_width = 0
+        self.h_inter = 0
+        self.w_inter = 0
+        self.line_num = 0
+        self.line_width = 0
     
     def mask(self, img, seed):
-        
-        self.line_num = np.random.randint(3,7)
-        self.line_width = np.random.randint(8,14)
-        
         h = img.size()[1]
         w = img.size()[2]
         
-        inter_h = h // (self.line_num + 1) + np.random.randint(-40, 40)  # devide into self.line_num + 1 regions
-        inter_w = w // (self.line_num + 1) + np.random.randint(-40, 40)
+        inter_h = h // (self.line_num + 1) + self.h_inter  # devide into self.line_num + 1 regions
+        inter_w = w // (self.line_num + 1) + self.w_inter
         
         if seed > self.probability:
         
             for i in range(self.line_num):
                 img[:, slice((i + 1) * inter_h - self.line_width // 2, (i + 1) * inter_h + self.line_width // 2), :] = self.mean
-                # img[0, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[0]
-                # img[1, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[1]
-                # img[2, int((i + 1) * inter_h - self.line_width / 2): int((i + 1) * inter_h + self.line_width / 2), :] = self.mean[2]
         else:
             for i in range(self.line_num): 
                 img[:, : ,slice((i + 1) * inter_w - self.line_width // 2, (i + 1) * inter_w + self.line_width // 2)] = self.mean
-                # img[0, :, int((i + 1) * inter_w - self.line_width // 2): int((i + 1) * inter_w + self.line_width // 2)] = self.mean[0]
-                # img[1, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[1]
-                # img[2, :, int((i + 1) * inter_w - self.line_width / 2): int((i + 1) * inter_w + self.line_width / 2)] = self.mean[2]
         return img
  
     def __call__(self, img1, img2, target):
-        
+        self.h_inter = np.random.randint(-40, 40)
+        self.w_inter = np.random.randint(-40, 40)
+        self.line_num = np.random.randint(3,7)
+        self.line_width = np.random.randint(8,14)
         seed =  random.uniform(0, 1)
         img1 = self.mask(img1, seed)
         img2 = self.mask(img2, seed)
