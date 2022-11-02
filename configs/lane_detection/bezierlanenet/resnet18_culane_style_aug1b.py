@@ -2,7 +2,7 @@ from importmagician import import_from
 with import_from('./'):
     # Data pipeline
     from configs.lane_detection.common.datasets.culane_bezier_style import dataset
-    from configs.lane_detection.common.datasets.train_level1b_288 import train_augmentation
+    from configs.lane_detection.common.datasets.train_level1b_288_style import train_augmentation
     from configs.lane_detection.common.datasets.test_288 import test_augmentation
 
     # Optimization pipeline
@@ -12,9 +12,9 @@ with import_from('./'):
 
 
 train = dict(
-    exp_name='resnet18_bezierlanenet_culane-aug2_mixall',
+    exp_name='resnet18_bezierlanenet_culane-aug2_mixall_22',
     workers=10,
-    batch_size=18,
+    batch_size=20,
     checkpoint=None,
     # Device args
     world_size=0,
@@ -34,10 +34,10 @@ train = dict(
 )
 
 test = dict(
-    exp_name='resnet18_bezierlanenet_culane-aug2_mixall',
+    exp_name='resnet18_bezierlanenet_culane-aug2_mixall_22',
     workers=0,
     batch_size=1,
-    checkpoint='./checkpoints/resnet18_bezierlanenet_culane-aug2_mixall/model.pt',
+    checkpoint='./checkpoints/resnet18_bezierlanenet_culane-aug2_mixall_22/model.pt',
     # Device args
     device='cuda',
 

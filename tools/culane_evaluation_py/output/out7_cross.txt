@@ -1,5 +1,5 @@
 file: ./output/out7_cross.txt
-tp: 0 fp: 1277 fn: 0
+tp: 0 fp: 1200 fn: 0
 precision: 0.000000
 recall: 0.000000
 Fmeasure: 0.000000
