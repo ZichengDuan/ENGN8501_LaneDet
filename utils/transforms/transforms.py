@@ -255,7 +255,7 @@ class RandomMasking(object):
         self.w_inter = np.random.randint(-40, 40)
         self.line_num = np.random.randint(3,7)
         self.line_width = np.random.randint(8,14)
-        img, target = self.mask(img, seed)
+        img = self.mask(img, seed)
         return img, target
     
     
