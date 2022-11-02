@@ -236,12 +236,11 @@ class RandomMasking(object):
     def mask(self, img, seed):
         h = img.size()[1]
         w = img.size()[2]
-        
+        # print(self.line_num, self.h_inter, self.line_width)
         inter_h = h // (self.line_num + 1) + self.h_inter  # devide into self.line_num + 1 regions
         inter_w = w // (self.line_num + 1) + self.w_inter
         
         if seed > self.probability:
-        
             for i in range(self.line_num):
                 img[:, slice((i + 1) * inter_h - self.line_width // 2, (i + 1) * inter_h + self.line_width // 2), :] = self.mean
         else:
@@ -254,7 +253,7 @@ class RandomMasking(object):
         self.h_inter = np.random.randint(-40, 40)
         self.w_inter = np.random.randint(-40, 40)
         self.line_num = np.random.randint(3,7)
-        self.line_width = np.random.randint(8,14)
+        self.line_width = np.random.randint(10,20)
         img = self.mask(img, seed)
         return img, target
     
@@ -301,7 +300,7 @@ class RandomMasking_TwoImages(object):
         self.h_inter = np.random.randint(-40, 40)
         self.w_inter = np.random.randint(-40, 40)
         self.line_num = np.random.randint(3,7)
-        self.line_width = np.random.randint(8,14)
+        self.line_width = np.random.randint(10,20)
         seed =  random.uniform(0, 1)
         img1 = self.mask(img1, seed)
         img2 = self.mask(img2, seed)
