@@ -65,7 +65,7 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
             if self.transfer_image_dir is not None:
                 transfer_img = Image.open(self.transfered_images[index]).convert('RGB')
         # crop the image for garauntee two images will be same
-        img, transfer_img = self._pre_process(img, transfer_img)
+                img, transfer_img = self._pre_process(img, transfer_img)
         # Transforms
         if self.transforms is not None:
             if self.transfer_image_dir is None or self.test != 0:

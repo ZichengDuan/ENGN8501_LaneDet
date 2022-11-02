@@ -1,0 +1,1172 @@
+Loaded torchvision ImageNet pre-trained weights V1.
+model is  BezierLaneNet(
+  (backbone): IntermediateLayerGetter(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (dilated_blocks): Sequential(
+    (0): DilatedBottleneck(
+      (conv1): Sequential(
+        (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv2): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv3): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU(inplace=True)
+    )
+    (1): DilatedBottleneck(
+      (conv1): Sequential(
+        (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv2): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(8, 8), dilation=(8, 8))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv3): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (simple_flip_2d): FeatureFlipFusion(
+    (proj1): Sequential(
+      (0): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (proj2_conv): DCN_v2_Ref(
+      (conv_offset): Conv2d(512, 27, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (proj2_norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (aggregator): AvgPool2d(kernel_size=(23, 1), stride=1, padding=0)
+  (regression_head): ConvProjection_1D(
+    (hidden_layers): ModuleList(
+      (0): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+      (1): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+    )
+    (hidden_norms): ModuleList(
+      (0): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (proj_classification): Conv1d(256, 1, kernel_size=(1,), stride=(1,))
+  (proj_regression): Conv1d(256, 8, kernel_size=(1,), stride=(1,))
+  (segmentation_head): SimpleSegHead(
+    (conv): ConvBNReLU(
+      (conv): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (conv_out): Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (attn1): attention(
+    (make_qkv): Sequential(
+      (0): Conv2d(256, 768, kernel_size=(1, 1), stride=(1, 1))
+      (1): Conv2d(768, 768, kernel_size=(11, 11), stride=(1, 1), padding=(5, 5), groups=768)
+    )
+    (relu): ReLU()
+    (linear): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (softmax): Softmax(dim=-1)
+  )
+  (attn2): attention(
+    (make_qkv): Sequential(
+      (0): Conv2d(256, 768, kernel_size=(1, 1), stride=(1, 1))
+      (1): Conv2d(768, 768, kernel_size=(11, 11), stride=(1, 1), padding=(5, 5), groups=768)
+    )
+    (relu): ReLU()
+    (linear): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (softmax): Softmax(dim=-1)
+  )
+)
+Not using distributed mode
+cuda
+There are 58269 in this dataset
+/root/ENGN8501_LaneDet_/utils/models/lane_detection/laneatt.py:22: UserWarning: Can't complie line nms op for LaneATT. Set verbose=True for load in /utils/csrc/apis.py L9 for details.
+[1, 322] training loss: 0.2361
+[1, 322] loss label: 0.1753
+[1, 322] loss curve: 0.1554
+[1, 322] loss seg: 0.0843
+[1, 322] valid portion: 0.9969
+[1, 645] training loss: 0.1133
+[1, 645] loss label: 0.0871
+[1, 645] loss curve: 0.0693
+[1, 645] loss seg: 0.0471
+[1, 645] valid portion: 1.0000
+[1, 968] training loss: 0.0829
+[1, 968] loss label: 0.0384
+[1, 968] loss curve: 0.0492
+[1, 968] loss seg: 0.0398
+[1, 968] valid portion: 1.0000
+[1, 1291] training loss: 0.0665
+[1, 1291] loss label: 0.0301
+[1, 1291] loss curve: 0.0357
+[1, 1291] loss seg: 0.0369
+[1, 1291] valid portion: 1.0000
+[1, 1614] training loss: 0.0610
+[1, 1614] loss label: 0.0217
+[1, 1614] loss curve: 0.0322
+[1, 1614] loss seg: 0.0354
+[1, 1614] valid portion: 0.9999
+[1, 1937] training loss: 0.0562
+[1, 1937] loss label: 0.0175
+[1, 1937] loss curve: 0.0290
+[1, 1937] loss seg: 0.0339
+[1, 1937] valid portion: 1.0000
+[1, 2260] training loss: 0.0550
+[1, 2260] loss label: 0.0152
+[1, 2260] loss curve: 0.0279
+[1, 2260] loss seg: 0.0342
+[1, 2260] valid portion: 0.9999
+[1, 2583] training loss: 0.0537
+[1, 2583] loss label: 0.0136
+[1, 2583] loss curve: 0.0274
+[1, 2583] loss seg: 0.0332
+[1, 2583] valid portion: 1.0000
+[1, 2906] training loss: 0.0507
+[1, 2906] loss label: 0.0125
+[1, 2906] loss curve: 0.0252
+[1, 2906] loss seg: 0.0323
+[1, 2906] valid portion: 1.0000
+[1, 3229] training loss: 0.0516
+[1, 3229] loss label: 0.0117
+[1, 3229] loss curve: 0.0262
+[1, 3229] loss seg: 0.0324
+[1, 3229] valid portion: 1.0000
+Epoch time: 800.09s
+[2, 314] training loss: 0.0499
+[2, 314] loss label: 0.0143
+[2, 314] loss curve: 0.0245
+[2, 314] loss seg: 0.0320
+[2, 314] valid portion: 1.0000
+[2, 637] training loss: 0.0496
+[2, 637] loss label: 0.0086
+[2, 637] loss curve: 0.0248
+[2, 637] loss seg: 0.0320
+[2, 637] valid portion: 1.0000
+[2, 960] training loss: 0.0482
+[2, 960] loss label: 0.0066
+[2, 960] loss curve: 0.0239
+[2, 960] loss seg: 0.0314
+[2, 960] valid portion: 1.0000
+[2, 1283] training loss: 0.0479
+[2, 1283] loss label: 0.0062
+[2, 1283] loss curve: 0.0235
+[2, 1283] loss seg: 0.0317
+[2, 1283] valid portion: 1.0000
+[2, 1606] training loss: 0.0469
+[2, 1606] loss label: 0.0054
+[2, 1606] loss curve: 0.0232
+[2, 1606] loss seg: 0.0309
+[2, 1606] valid portion: 0.9999
+[2, 1929] training loss: 0.0466
+[2, 1929] loss label: 0.0054
+[2, 1929] loss curve: 0.0231
+[2, 1929] loss seg: 0.0306
+[2, 1929] valid portion: 1.0000
+[2, 2252] training loss: 0.0461
+[2, 2252] loss label: 0.0058
+[2, 2252] loss curve: 0.0226
+[2, 2252] loss seg: 0.0305
+[2, 2252] valid portion: 1.0000
+[2, 2575] training loss: 0.0456
+[2, 2575] loss label: 0.0055
+[2, 2575] loss curve: 0.0220
+[2, 2575] loss seg: 0.0307
+[2, 2575] valid portion: 1.0000
+[2, 2898] training loss: 0.0450
+[2, 2898] loss label: 0.0049
+[2, 2898] loss curve: 0.0220
+[2, 2898] loss seg: 0.0301
+[2, 2898] valid portion: 1.0000
+[2, 3221] training loss: 0.0446
+[2, 3221] loss label: 0.0049
+[2, 3221] loss curve: 0.0212
+[2, 3221] loss seg: 0.0306
+[2, 3221] valid portion: 1.0000
+Epoch time: 802.93s
+[3, 306] training loss: 0.0451
+[3, 306] loss label: 0.0050
+[3, 306] loss curve: 0.0217
+[3, 306] loss seg: 0.0306
+[3, 306] valid portion: 1.0000
+[3, 629] training loss: 0.0437
+[3, 629] loss label: 0.0046
+[3, 629] loss curve: 0.0209
+[3, 629] loss seg: 0.0298
+[3, 629] valid portion: 1.0000
+[3, 952] training loss: 0.0443
+[3, 952] loss label: 0.0045
+[3, 952] loss curve: 0.0210
+[3, 952] loss seg: 0.0304
+[3, 952] valid portion: 1.0000
+[3, 1275] training loss: 0.0434
+[3, 1275] loss label: 0.0042
+[3, 1275] loss curve: 0.0209
+[3, 1275] loss seg: 0.0294
+[3, 1275] valid portion: 1.0000
+[3, 1598] training loss: 0.0435
+[3, 1598] loss label: 0.0042
+[3, 1598] loss curve: 0.0204
+[3, 1598] loss seg: 0.0302
+[3, 1598] valid portion: 1.0000
+[3, 1921] training loss: 0.0426
+[3, 1921] loss label: 0.0042
+[3, 1921] loss curve: 0.0199
+[3, 1921] loss seg: 0.0297
+[3, 1921] valid portion: 1.0000
+[3, 2244] training loss: 0.0427
+[3, 2244] loss label: 0.0045
+[3, 2244] loss curve: 0.0201
+[3, 2244] loss seg: 0.0295
+[3, 2244] valid portion: 1.0000
+[3, 2567] training loss: 0.0419
+[3, 2567] loss label: 0.0041
+[3, 2567] loss curve: 0.0194
+[3, 2567] loss seg: 0.0295
+[3, 2567] valid portion: 0.9999
+[3, 2890] training loss: 0.0418
+[3, 2890] loss label: 0.0042
+[3, 2890] loss curve: 0.0189
+[3, 2890] loss seg: 0.0299
+[3, 2890] valid portion: 1.0000
+[3, 3213] training loss: 0.0413
+[3, 3213] loss label: 0.0040
+[3, 3213] loss curve: 0.0192
+[3, 3213] loss seg: 0.0290
+[3, 3213] valid portion: 1.0000
+Epoch time: 803.78s
+[4, 298] training loss: 0.0417
+[4, 298] loss label: 0.0040
+[4, 298] loss curve: 0.0194
+[4, 298] loss seg: 0.0292
+[4, 298] valid portion: 1.0000
+[4, 621] training loss: 0.0409
+[4, 621] loss label: 0.0039
+[4, 621] loss curve: 0.0186
+[4, 621] loss seg: 0.0291
+[4, 621] valid portion: 1.0000
+[4, 944] training loss: 0.0415
+[4, 944] loss label: 0.0041
+[4, 944] loss curve: 0.0192
+[4, 944] loss seg: 0.0292
+[4, 944] valid portion: 1.0000
+[4, 1267] training loss: 0.0420
+[4, 1267] loss label: 0.0048
+[4, 1267] loss curve: 0.0194
+[4, 1267] loss seg: 0.0295
+[4, 1267] valid portion: 1.0000
+[4, 1590] training loss: 0.0413
+[4, 1590] loss label: 0.0041
+[4, 1590] loss curve: 0.0192
+[4, 1590] loss seg: 0.0290
+[4, 1590] valid portion: 1.0000
+[4, 1913] training loss: 0.0417
+[4, 1913] loss label: 0.0045
+[4, 1913] loss curve: 0.0191
+[4, 1913] loss seg: 0.0296
+[4, 1913] valid portion: 1.0000
+[4, 2236] training loss: 0.0392
+[4, 2236] loss label: 0.0037
+[4, 2236] loss curve: 0.0174
+[4, 2236] loss seg: 0.0285
+[4, 2236] valid portion: 0.9999
+[4, 2559] training loss: 0.0404
+[4, 2559] loss label: 0.0036
+[4, 2559] loss curve: 0.0185
+[4, 2559] loss seg: 0.0287
+[4, 2559] valid portion: 1.0000
+[4, 2882] training loss: 0.0399
+[4, 2882] loss label: 0.0039
+[4, 2882] loss curve: 0.0181
+[4, 2882] loss seg: 0.0285
+[4, 2882] valid portion: 1.0000
+[4, 3205] training loss: 0.0410
+[4, 3205] loss label: 0.0046
+[4, 3205] loss curve: 0.0187
+[4, 3205] loss seg: 0.0292
+[4, 3205] valid portion: 1.0000
+Epoch time: 803.84s
+[5, 290] training loss: 0.0402
+[5, 290] loss label: 0.0041
+[5, 290] loss curve: 0.0181
+[5, 290] loss seg: 0.0289
+[5, 290] valid portion: 1.0000
+[5, 613] training loss: 0.0395
+[5, 613] loss label: 0.0032
+[5, 613] loss curve: 0.0182
+[5, 613] loss seg: 0.0280
+[5, 613] valid portion: 1.0000
+[5, 936] training loss: 0.0396
+[5, 936] loss label: 0.0030
+[5, 936] loss curve: 0.0181
+[5, 936] loss seg: 0.0282
+[5, 936] valid portion: 1.0000
+[5, 1259] training loss: 0.0383
+[5, 1259] loss label: 0.0029
+[5, 1259] loss curve: 0.0171
+[5, 1259] loss seg: 0.0280
+[5, 1259] valid portion: 1.0000
+[5, 1582] training loss: 0.0388
+[5, 1582] loss label: 0.0029
+[5, 1582] loss curve: 0.0177
+[5, 1582] loss seg: 0.0278
+[5, 1582] valid portion: 1.0000
+[5, 1905] training loss: 0.0388
+[5, 1905] loss label: 0.0031
+[5, 1905] loss curve: 0.0172
+[5, 1905] loss seg: 0.0283
+[5, 1905] valid portion: 1.0000
+[5, 2228] training loss: 0.0382
+[5, 2228] loss label: 0.0027
+[5, 2228] loss curve: 0.0169
+[5, 2228] loss seg: 0.0280
+[5, 2228] valid portion: 1.0000
+[5, 2551] training loss: 0.0384
+[5, 2551] loss label: 0.0028
+[5, 2551] loss curve: 0.0168
+[5, 2551] loss seg: 0.0284
+[5, 2551] valid portion: 1.0000
+[5, 2874] training loss: 0.0374
+[5, 2874] loss label: 0.0027
+[5, 2874] loss curve: 0.0163
+[5, 2874] loss seg: 0.0277
+[5, 2874] valid portion: 1.0000
+[5, 3197] training loss: 0.0382
+[5, 3197] loss label: 0.0029
+[5, 3197] loss curve: 0.0168
+[5, 3197] loss seg: 0.0282
+[5, 3197] valid portion: 1.0000
+Epoch time: 803.61s
+[6, 282] training loss: 0.0372
+[6, 282] loss label: 0.0027
+[6, 282] loss curve: 0.0161
+[6, 282] loss seg: 0.0277
+[6, 282] valid portion: 1.0000
+[6, 605] training loss: 0.0374
+[6, 605] loss label: 0.0027
+[6, 605] loss curve: 0.0163
+[6, 605] loss seg: 0.0277
+[6, 605] valid portion: 1.0000
+[6, 928] training loss: 0.0372
+[6, 928] loss label: 0.0028
+[6, 928] loss curve: 0.0161
+[6, 928] loss seg: 0.0277
+[6, 928] valid portion: 1.0000
+[6, 1251] training loss: 0.0373
+[6, 1251] loss label: 0.0025
+[6, 1251] loss curve: 0.0162
+[6, 1251] loss seg: 0.0278
+[6, 1251] valid portion: 1.0000
+[6, 1574] training loss: 0.0368
+[6, 1574] loss label: 0.0025
+[6, 1574] loss curve: 0.0159
+[6, 1574] loss seg: 0.0275
+[6, 1574] valid portion: 1.0000
+[6, 1897] training loss: 0.0374
+[6, 1897] loss label: 0.0024
+[6, 1897] loss curve: 0.0163
+[6, 1897] loss seg: 0.0278
+[6, 1897] valid portion: 0.9999
+[6, 2220] training loss: 0.0364
+[6, 2220] loss label: 0.0028
+[6, 2220] loss curve: 0.0155
+[6, 2220] loss seg: 0.0275
+[6, 2220] valid portion: 1.0000
+[6, 2543] training loss: 0.0369
+[6, 2543] loss label: 0.0025
+[6, 2543] loss curve: 0.0159
+[6, 2543] loss seg: 0.0276
+[6, 2543] valid portion: 1.0000
+[6, 2866] training loss: 0.0364
+[6, 2866] loss label: 0.0026
+[6, 2866] loss curve: 0.0157
+[6, 2866] loss seg: 0.0273
+[6, 2866] valid portion: 1.0000
+[6, 3189] training loss: 0.0370
+[6, 3189] loss label: 0.0023
+[6, 3189] loss curve: 0.0158
+[6, 3189] loss seg: 0.0280
+[6, 3189] valid portion: 1.0000
+Epoch time: 802.88s
+[7, 274] training loss: 0.0359
+[7, 274] loss label: 0.0023
+[7, 274] loss curve: 0.0153
+[7, 274] loss seg: 0.0272
+[7, 274] valid portion: 1.0000
+[7, 597] training loss: 0.0360
+[7, 597] loss label: 0.0025
+[7, 597] loss curve: 0.0154
+[7, 597] loss seg: 0.0271
+[7, 597] valid portion: 1.0000
+[7, 920] training loss: 0.0357
+[7, 920] loss label: 0.0023
+[7, 920] loss curve: 0.0153
+[7, 920] loss seg: 0.0270
+[7, 920] valid portion: 1.0000
+[7, 1243] training loss: 0.0357
+[7, 1243] loss label: 0.0022
+[7, 1243] loss curve: 0.0151
+[7, 1243] loss seg: 0.0271
+[7, 1243] valid portion: 0.9999
+[7, 1566] training loss: 0.0355
+[7, 1566] loss label: 0.0025
+[7, 1566] loss curve: 0.0150
+[7, 1566] loss seg: 0.0270
+[7, 1566] valid portion: 1.0000
+[7, 1889] training loss: 0.0357
+[7, 1889] loss label: 0.0022
+[7, 1889] loss curve: 0.0151
+[7, 1889] loss seg: 0.0272
+[7, 1889] valid portion: 1.0000
+[7, 2212] training loss: 0.0361
+[7, 2212] loss label: 0.0026
+[7, 2212] loss curve: 0.0153
+[7, 2212] loss seg: 0.0274
+[7, 2212] valid portion: 1.0000
+[7, 2535] training loss: 0.0353
+[7, 2535] loss label: 0.0022
+[7, 2535] loss curve: 0.0150
+[7, 2535] loss seg: 0.0269
+[7, 2535] valid portion: 1.0000
+[7, 2858] training loss: 0.0354
+[7, 2858] loss label: 0.0022
+[7, 2858] loss curve: 0.0146
+[7, 2858] loss seg: 0.0274
+[7, 2858] valid portion: 1.0000
+[7, 3181] training loss: 0.0352
+[7, 3181] loss label: 0.0021
+[7, 3181] loss curve: 0.0146
+[7, 3181] loss seg: 0.0272
+[7, 3181] valid portion: 1.0000
+Epoch time: 803.92s
+[8, 266] training loss: 0.0351
+[8, 266] loss label: 0.0024
+[8, 266] loss curve: 0.0148
+[8, 266] loss seg: 0.0268
+[8, 266] valid portion: 1.0000
+[8, 589] training loss: 0.0350
+[8, 589] loss label: 0.0020
+[8, 589] loss curve: 0.0146
+[8, 589] loss seg: 0.0269
+[8, 589] valid portion: 1.0000
+[8, 912] training loss: 0.0348
+[8, 912] loss label: 0.0021
+[8, 912] loss curve: 0.0145
+[8, 912] loss seg: 0.0267
+[8, 912] valid portion: 0.9999
+[8, 1235] training loss: 0.0348
+[8, 1235] loss label: 0.0024
+[8, 1235] loss curve: 0.0144
+[8, 1235] loss seg: 0.0269
+[8, 1235] valid portion: 1.0000
+[8, 1558] training loss: 0.0346
+[8, 1558] loss label: 0.0020
+[8, 1558] loss curve: 0.0144
+[8, 1558] loss seg: 0.0266
+[8, 1558] valid portion: 0.9999
+[8, 1881] training loss: 0.0344
+[8, 1881] loss label: 0.0021
+[8, 1881] loss curve: 0.0141
+[8, 1881] loss seg: 0.0268
+[8, 1881] valid portion: 1.0000
+[8, 2204] training loss: 0.0348
+[8, 2204] loss label: 0.0022
+[8, 2204] loss curve: 0.0145
+[8, 2204] loss seg: 0.0268
+[8, 2204] valid portion: 1.0000
+[8, 2527] training loss: 0.0344
+[8, 2527] loss label: 0.0023
+[8, 2527] loss curve: 0.0140
+[8, 2527] loss seg: 0.0268
+[8, 2527] valid portion: 1.0000
+[8, 2850] training loss: 0.0339
+[8, 2850] loss label: 0.0019
+[8, 2850] loss curve: 0.0140
+[8, 2850] loss seg: 0.0263
+[8, 2850] valid portion: 1.0000
+[8, 3173] training loss: 0.0347
+[8, 3173] loss label: 0.0019
+[8, 3173] loss curve: 0.0143
+[8, 3173] loss seg: 0.0270
+[8, 3173] valid portion: 0.9999
+Epoch time: 803.59s
+[9, 258] training loss: 0.0350
+[9, 258] loss label: 0.0020
+[9, 258] loss curve: 0.0146
+[9, 258] loss seg: 0.0269
+[9, 258] valid portion: 0.9999
+[9, 581] training loss: 0.0341
+[9, 581] loss label: 0.0020
+[9, 581] loss curve: 0.0139
+[9, 581] loss seg: 0.0266
+[9, 581] valid portion: 1.0000
+[9, 904] training loss: 0.0339
+[9, 904] loss label: 0.0017
+[9, 904] loss curve: 0.0139
+[9, 904] loss seg: 0.0264
+[9, 904] valid portion: 1.0000
+[9, 1227] training loss: 0.0341
+[9, 1227] loss label: 0.0017
+[9, 1227] loss curve: 0.0140
+[9, 1227] loss seg: 0.0266
+[9, 1227] valid portion: 1.0000
+[9, 1550] training loss: 0.0332
+[9, 1550] loss label: 0.0020
+[9, 1550] loss curve: 0.0134
+[9, 1550] loss seg: 0.0262
+[9, 1550] valid portion: 1.0000
+[9, 1873] training loss: 0.0337
+[9, 1873] loss label: 0.0018
+[9, 1873] loss curve: 0.0138
+[9, 1873] loss seg: 0.0263
+[9, 1873] valid portion: 1.0000
+[9, 2196] training loss: 0.0334
+[9, 2196] loss label: 0.0019
+[9, 2196] loss curve: 0.0137
+[9, 2196] loss seg: 0.0261
+[9, 2196] valid portion: 1.0000
+[9, 2519] training loss: 0.0328
+[9, 2519] loss label: 0.0019
+[9, 2519] loss curve: 0.0132
+[9, 2519] loss seg: 0.0258
+[9, 2519] valid portion: 1.0000
+[9, 2842] training loss: 0.0336
+[9, 2842] loss label: 0.0019
+[9, 2842] loss curve: 0.0136
+[9, 2842] loss seg: 0.0265
+[9, 2842] valid portion: 1.0000
+[9, 3165] training loss: 0.0334
+[9, 3165] loss label: 0.0020
+[9, 3165] loss curve: 0.0133
+[9, 3165] loss seg: 0.0265
+[9, 3165] valid portion: 1.0000
+Epoch time: 803.75s
+[10, 250] training loss: 0.0332
+[10, 250] loss label: 0.0018
+[10, 250] loss curve: 0.0133
+[10, 250] loss seg: 0.0262
+[10, 250] valid portion: 0.9999
+[10, 573] training loss: 0.0332
+[10, 573] loss label: 0.0018
+[10, 573] loss curve: 0.0132
+[10, 573] loss seg: 0.0264
+[10, 573] valid portion: 0.9999
+[10, 896] training loss: 0.0329
+[10, 896] loss label: 0.0019
+[10, 896] loss curve: 0.0131
+[10, 896] loss seg: 0.0262
+[10, 896] valid portion: 1.0000
+[10, 1219] training loss: 0.0337
+[10, 1219] loss label: 0.0018
+[10, 1219] loss curve: 0.0137
+[10, 1219] loss seg: 0.0264
+[10, 1219] valid portion: 1.0000
+[10, 1542] training loss: 0.0329
+[10, 1542] loss label: 0.0018
+[10, 1542] loss curve: 0.0131
+[10, 1542] loss seg: 0.0261
+[10, 1542] valid portion: 1.0000
+[10, 1865] training loss: 0.0331
+[10, 1865] loss label: 0.0017
+[10, 1865] loss curve: 0.0132
+[10, 1865] loss seg: 0.0264
+[10, 1865] valid portion: 0.9999
+[10, 2188] training loss: 0.0331
+[10, 2188] loss label: 0.0018
+[10, 2188] loss curve: 0.0132
+[10, 2188] loss seg: 0.0263
+[10, 2188] valid portion: 0.9999
+[10, 2511] training loss: 0.0335
+[10, 2511] loss label: 0.0018
+[10, 2511] loss curve: 0.0132
+[10, 2511] loss seg: 0.0268
+[10, 2511] valid portion: 1.0000
+[10, 2834] training loss: 0.0321
+[10, 2834] loss label: 0.0017
+[10, 2834] loss curve: 0.0127
+[10, 2834] loss seg: 0.0256
+[10, 2834] valid portion: 1.0000
+[10, 3157] training loss: 0.0323
+[10, 3157] loss label: 0.0016
+[10, 3157] loss curve: 0.0130
+[10, 3157] loss seg: 0.0256
+[10, 3157] valid portion: 1.0000
+Epoch time: 804.12s
+[11, 242] training loss: 0.0322
+[11, 242] loss label: 0.0017
+[11, 242] loss curve: 0.0127
+[11, 242] loss seg: 0.0258
+[11, 242] valid portion: 1.0000
+[11, 565] training loss: 0.0326
+[11, 565] loss label: 0.0016
+[11, 565] loss curve: 0.0129
+[11, 565] loss seg: 0.0260
+[11, 565] valid portion: 1.0000
+[11, 888] training loss: 0.0322
+[11, 888] loss label: 0.0016
+[11, 888] loss curve: 0.0127
+[11, 888] loss seg: 0.0259
+[11, 888] valid portion: 1.0000
+[11, 1211] training loss: 0.0330
+[11, 1211] loss label: 0.0016
+[11, 1211] loss curve: 0.0132
+[11, 1211] loss seg: 0.0262
+[11, 1211] valid portion: 1.0000
+[11, 1534] training loss: 0.0315
+[11, 1534] loss label: 0.0017
+[11, 1534] loss curve: 0.0124
+[11, 1534] loss seg: 0.0253
+[11, 1534] valid portion: 1.0000
+[11, 1857] training loss: 0.0320
+[11, 1857] loss label: 0.0015
+[11, 1857] loss curve: 0.0125
+[11, 1857] loss seg: 0.0258
+[11, 1857] valid portion: 1.0000
+[11, 2180] training loss: 0.0318
+[11, 2180] loss label: 0.0017
+[11, 2180] loss curve: 0.0122
+[11, 2180] loss seg: 0.0258
+[11, 2180] valid portion: 1.0000
+[11, 2503] training loss: 0.0316
+[11, 2503] loss label: 0.0015
+[11, 2503] loss curve: 0.0123
+[11, 2503] loss seg: 0.0256
+[11, 2503] valid portion: 1.0000
+[11, 2826] training loss: 0.0322
+[11, 2826] loss label: 0.0015
+[11, 2826] loss curve: 0.0126
+[11, 2826] loss seg: 0.0259
+[11, 2826] valid portion: 1.0000
+[11, 3149] training loss: 0.0318
+[11, 3149] loss label: 0.0018
+[11, 3149] loss curve: 0.0123
+[11, 3149] loss seg: 0.0258
+[11, 3149] valid portion: 1.0000
+Epoch time: 804.76s
+[12, 234] training loss: 0.0320
+[12, 234] loss label: 0.0017
+[12, 234] loss curve: 0.0125
+[12, 234] loss seg: 0.0258
+[12, 234] valid portion: 1.0000
+[12, 557] training loss: 0.0317
+[12, 557] loss label: 0.0016
+[12, 557] loss curve: 0.0122
+[12, 557] loss seg: 0.0258
+[12, 557] valid portion: 1.0000
+[12, 880] training loss: 0.0311
+[12, 880] loss label: 0.0013
+[12, 880] loss curve: 0.0116
+[12, 880] loss seg: 0.0258
+[12, 880] valid portion: 1.0000
+[12, 1203] training loss: 0.0314
+[12, 1203] loss label: 0.0014
+[12, 1203] loss curve: 0.0121
+[12, 1203] loss seg: 0.0256
+[12, 1203] valid portion: 1.0000
+[12, 1526] training loss: 0.0315
+[12, 1526] loss label: 0.0015
+[12, 1526] loss curve: 0.0118
+[12, 1526] loss seg: 0.0259
+[12, 1526] valid portion: 1.0000
+[12, 1849] training loss: 0.0309
+[12, 1849] loss label: 0.0014
+[12, 1849] loss curve: 0.0118
+[12, 1849] loss seg: 0.0253
+[12, 1849] valid portion: 1.0000
+[12, 2172] training loss: 0.0314
+[12, 2172] loss label: 0.0016
+[12, 2172] loss curve: 0.0121
+[12, 2172] loss seg: 0.0255
+[12, 2172] valid portion: 1.0000
+[12, 2495] training loss: 0.0310
+[12, 2495] loss label: 0.0015
+[12, 2495] loss curve: 0.0119
+[12, 2495] loss seg: 0.0253
+[12, 2495] valid portion: 1.0000
+[12, 2818] training loss: 0.0318
+[12, 2818] loss label: 0.0017
+[12, 2818] loss curve: 0.0121
+[12, 2818] loss seg: 0.0260
+[12, 2818] valid portion: 1.0000
+[12, 3141] training loss: 0.0310
+[12, 3141] loss label: 0.0014
+[12, 3141] loss curve: 0.0118
+[12, 3141] loss seg: 0.0255
+[12, 3141] valid portion: 1.0000
+Epoch time: 804.66s
+[13, 226] training loss: 0.0308
+[13, 226] loss label: 0.0013
+[13, 226] loss curve: 0.0116
+[13, 226] loss seg: 0.0254
+[13, 226] valid portion: 1.0000
+[13, 549] training loss: 0.0313
+[13, 549] loss label: 0.0014
+[13, 549] loss curve: 0.0119
+[13, 549] loss seg: 0.0257
+[13, 549] valid portion: 1.0000
+[13, 872] training loss: 0.0308
+[13, 872] loss label: 0.0015
+[13, 872] loss curve: 0.0117
+[13, 872] loss seg: 0.0252
+[13, 872] valid portion: 1.0000
+[13, 1195] training loss: 0.0307
+[13, 1195] loss label: 0.0013
+[13, 1195] loss curve: 0.0116
+[13, 1195] loss seg: 0.0253
+[13, 1195] valid portion: 1.0000
+[13, 1518] training loss: 0.0304
+[13, 1518] loss label: 0.0012
+[13, 1518] loss curve: 0.0113
+[13, 1518] loss seg: 0.0253
+[13, 1518] valid portion: 1.0000
+[13, 1841] training loss: 0.0308
+[13, 1841] loss label: 0.0015
+[13, 1841] loss curve: 0.0115
+[13, 1841] loss seg: 0.0255
+[13, 1841] valid portion: 1.0000
+[13, 2164] training loss: 0.0307
+[13, 2164] loss label: 0.0014
+[13, 2164] loss curve: 0.0115
+[13, 2164] loss seg: 0.0254
+[13, 2164] valid portion: 1.0000
+[13, 2487] training loss: 0.0305
+[13, 2487] loss label: 0.0014
+[13, 2487] loss curve: 0.0113
+[13, 2487] loss seg: 0.0254
+[13, 2487] valid portion: 1.0000
+[13, 2810] training loss: 0.0301
+[13, 2810] loss label: 0.0013
+[13, 2810] loss curve: 0.0111
+[13, 2810] loss seg: 0.0251
+[13, 2810] valid portion: 1.0000
+[13, 3133] training loss: 0.0302
+[13, 3133] loss label: 0.0013
+[13, 3133] loss curve: 0.0112
+[13, 3133] loss seg: 0.0252
+[13, 3133] valid portion: 0.9999
+Epoch time: 803.62s
+[14, 218] training loss: 0.0313
+[14, 218] loss label: 0.0014
+[14, 218] loss curve: 0.0114
+[14, 218] loss seg: 0.0264
+[14, 218] valid portion: 1.0000
+[14, 541] training loss: 0.0299
+[14, 541] loss label: 0.0013
+[14, 541] loss curve: 0.0110
+[14, 541] loss seg: 0.0250
+[14, 541] valid portion: 1.0000
+[14, 864] training loss: 0.0304
+[14, 864] loss label: 0.0016
+[14, 864] loss curve: 0.0112
+[14, 864] loss seg: 0.0255
+[14, 864] valid portion: 1.0000
+[14, 1187] training loss: 0.0299
+[14, 1187] loss label: 0.0012
+[14, 1187] loss curve: 0.0110
+[14, 1187] loss seg: 0.0251
+[14, 1187] valid portion: 1.0000
+[14, 1510] training loss: 0.0302
+[14, 1510] loss label: 0.0014
+[14, 1510] loss curve: 0.0112
+[14, 1510] loss seg: 0.0251
+[14, 1510] valid portion: 1.0000
+[14, 1833] training loss: 0.0298
+[14, 1833] loss label: 0.0012
+[14, 1833] loss curve: 0.0108
+[14, 1833] loss seg: 0.0251
+[14, 1833] valid portion: 0.9999
+[14, 2156] training loss: 0.0302
+[14, 2156] loss label: 0.0014
+[14, 2156] loss curve: 0.0111
+[14, 2156] loss seg: 0.0253
+[14, 2156] valid portion: 1.0000
+[14, 2479] training loss: 0.0303
+[14, 2479] loss label: 0.0013
+[14, 2479] loss curve: 0.0111
+[14, 2479] loss seg: 0.0254
+[14, 2479] valid portion: 1.0000
+[14, 2802] training loss: 0.0297
+[14, 2802] loss label: 0.0012
+[14, 2802] loss curve: 0.0107
+[14, 2802] loss seg: 0.0252
+[14, 2802] valid portion: 1.0000
+[14, 3125] training loss: 0.0294
+[14, 3125] loss label: 0.0012
+[14, 3125] loss curve: 0.0106
+[14, 3125] loss seg: 0.0249
+[14, 3125] valid portion: 1.0000
+Epoch time: 804.79s
+[15, 210] training loss: 0.0298
+[15, 210] loss label: 0.0012
+[15, 210] loss curve: 0.0108
+[15, 210] loss seg: 0.0251
+[15, 210] valid portion: 0.9999
+[15, 533] training loss: 0.0298
+[15, 533] loss label: 0.0012
+[15, 533] loss curve: 0.0108
+[15, 533] loss seg: 0.0252
+[15, 533] valid portion: 1.0000
+[15, 856] training loss: 0.0297
+[15, 856] loss label: 0.0014
+[15, 856] loss curve: 0.0106
+[15, 856] loss seg: 0.0252
+[15, 856] valid portion: 1.0000
+[15, 1179] training loss: 0.0293
+[15, 1179] loss label: 0.0013
+[15, 1179] loss curve: 0.0105
+[15, 1179] loss seg: 0.0248
+[15, 1179] valid portion: 1.0000
+[15, 1502] training loss: 0.0295
+[15, 1502] loss label: 0.0012
+[15, 1502] loss curve: 0.0107
+[15, 1502] loss seg: 0.0250
+[15, 1502] valid portion: 1.0000
+[15, 1825] training loss: 0.0292
+[15, 1825] loss label: 0.0010
+[15, 1825] loss curve: 0.0103
+[15, 1825] loss seg: 0.0251
+[15, 1825] valid portion: 1.0000
+[15, 2148] training loss: 0.0293
+[15, 2148] loss label: 0.0012
+[15, 2148] loss curve: 0.0105
+[15, 2148] loss seg: 0.0248
+[15, 2148] valid portion: 1.0000
+[15, 2471] training loss: 0.0291
+[15, 2471] loss label: 0.0013
+[15, 2471] loss curve: 0.0104
+[15, 2471] loss seg: 0.0247
+[15, 2471] valid portion: 1.0000
+[15, 2794] training loss: 0.0297
+[15, 2794] loss label: 0.0011
+[15, 2794] loss curve: 0.0106
+[15, 2794] loss seg: 0.0253
+[15, 2794] valid portion: 1.0000
+[15, 3117] training loss: 0.0293
+[15, 3117] loss label: 0.0011
+[15, 3117] loss curve: 0.0105
+[15, 3117] loss seg: 0.0250
+[15, 3117] valid portion: 1.0000
+Epoch time: 804.28s
+[16, 202] training loss: 0.0292
+[16, 202] loss label: 0.0012
+[16, 202] loss curve: 0.0105
+[16, 202] loss seg: 0.0247
+[16, 202] valid portion: 1.0000
+[16, 525] training loss: 0.0285
+[16, 525] loss label: 0.0009
+[16, 525] loss curve: 0.0099
+[16, 525] loss seg: 0.0246
+[16, 525] valid portion: 1.0000
+[16, 848] training loss: 0.0295
+[16, 848] loss label: 0.0012
+[16, 848] loss curve: 0.0107
+[16, 848] loss seg: 0.0249
+[16, 848] valid portion: 1.0000
+[16, 1171] training loss: 0.0294
+[16, 1171] loss label: 0.0012
+[16, 1171] loss curve: 0.0105
+[16, 1171] loss seg: 0.0250
+[16, 1171] valid portion: 1.0000
+[16, 1494] training loss: 0.0289
+[16, 1494] loss label: 0.0011
+[16, 1494] loss curve: 0.0102
+[16, 1494] loss seg: 0.0249
+[16, 1494] valid portion: 1.0000
+[16, 1817] training loss: 0.0292
+[16, 1817] loss label: 0.0011
+[16, 1817] loss curve: 0.0104
+[16, 1817] loss seg: 0.0248
+[16, 1817] valid portion: 1.0000
+[16, 2140] training loss: 0.0290
+[16, 2140] loss label: 0.0013
+[16, 2140] loss curve: 0.0103
+[16, 2140] loss seg: 0.0248
+[16, 2140] valid portion: 0.9999
+[16, 2463] training loss: 0.0291
+[16, 2463] loss label: 0.0011
+[16, 2463] loss curve: 0.0103
+[16, 2463] loss seg: 0.0250
+[16, 2463] valid portion: 1.0000
+[16, 2786] training loss: 0.0288
+[16, 2786] loss label: 0.0013
+[16, 2786] loss curve: 0.0101
+[16, 2786] loss seg: 0.0249
+[16, 2786] valid portion: 1.0000
+[16, 3109] training loss: 0.0282
+[16, 3109] loss label: 0.0009
+[16, 3109] loss curve: 0.0098
+[16, 3109] loss seg: 0.0244
+[16, 3109] valid portion: 1.0000
+Epoch time: 805.40s
+[17, 194] training loss: 0.0287
+[17, 194] loss label: 0.0012
+[17, 194] loss curve: 0.0101
+[17, 194] loss seg: 0.0247
+[17, 194] valid portion: 0.9999
+[17, 517] training loss: 0.0287
+[17, 517] loss label: 0.0010
+[17, 517] loss curve: 0.0100
+[17, 517] loss seg: 0.0248
+[17, 517] valid portion: 1.0000
+[17, 840] training loss: 0.0285
+[17, 840] loss label: 0.0011
+[17, 840] loss curve: 0.0100
+[17, 840] loss seg: 0.0245
+[17, 840] valid portion: 1.0000
+[17, 1163] training loss: 0.0285
+[17, 1163] loss label: 0.0011
+[17, 1163] loss curve: 0.0100
+[17, 1163] loss seg: 0.0246
+[17, 1163] valid portion: 1.0000
+[17, 1486] training loss: 0.0292
+[17, 1486] loss label: 0.0014
+[17, 1486] loss curve: 0.0103
+[17, 1486] loss seg: 0.0250
+[17, 1486] valid portion: 1.0000
+[17, 1809] training loss: 0.0286
+[17, 1809] loss label: 0.0011
+[17, 1809] loss curve: 0.0099
+[17, 1809] loss seg: 0.0248
+[17, 1809] valid portion: 1.0000
+[17, 2132] training loss: 0.0287
+[17, 2132] loss label: 0.0010
+[17, 2132] loss curve: 0.0100
+[17, 2132] loss seg: 0.0247
+[17, 2132] valid portion: 1.0000
+[17, 2455] training loss: 0.0282
+[17, 2455] loss label: 0.0009
+[17, 2455] loss curve: 0.0097
+[17, 2455] loss seg: 0.0245
+[17, 2455] valid portion: 1.0000
+[17, 2778] training loss: 0.0284
+[17, 2778] loss label: 0.0011
+[17, 2778] loss curve: 0.0097
+[17, 2778] loss seg: 0.0248
+[17, 2778] valid portion: 1.0000
+[17, 3101] training loss: 0.0283
+[17, 3101] loss label: 0.0012
+[17, 3101] loss curve: 0.0098
+[17, 3101] loss seg: 0.0245
+[17, 3101] valid portion: 1.0000
+Epoch time: 804.31s
+[18, 186] training loss: 0.0279
+[18, 186] loss label: 0.0011
+[18, 186] loss curve: 0.0096
+[18, 186] loss seg: 0.0244
+[18, 186] valid portion: 1.0000
+[18, 509] training loss: 0.0286
+[18, 509] loss label: 0.0011
+[18, 509] loss curve: 0.0099
+[18, 509] loss seg: 0.0249
+[18, 509] valid portion: 1.0000
+[18, 832] training loss: 0.0281
+[18, 832] loss label: 0.0011
+[18, 832] loss curve: 0.0096
+[18, 832] loss seg: 0.0244
+[18, 832] valid portion: 1.0000
+[18, 1155] training loss: 0.0280
+[18, 1155] loss label: 0.0011
+[18, 1155] loss curve: 0.0097
+[18, 1155] loss seg: 0.0243
+[18, 1155] valid portion: 1.0000
+[18, 1478] training loss: 0.0283
+[18, 1478] loss label: 0.0010
+[18, 1478] loss curve: 0.0098
+[18, 1478] loss seg: 0.0245
+[18, 1478] valid portion: 1.0000
+[18, 1801] training loss: 0.0287
+[18, 1801] loss label: 0.0010
+[18, 1801] loss curve: 0.0100
+[18, 1801] loss seg: 0.0248
+[18, 1801] valid portion: 1.0000
+[18, 2124] training loss: 0.0282
+[18, 2124] loss label: 0.0013
+[18, 2124] loss curve: 0.0096
+[18, 2124] loss seg: 0.0246
+[18, 2124] valid portion: 1.0000
+[18, 2447] training loss: 0.0283
+[18, 2447] loss label: 0.0012
+[18, 2447] loss curve: 0.0097
+[18, 2447] loss seg: 0.0247
+[18, 2447] valid portion: 1.0000
+[18, 2770] training loss: 0.0279
+[18, 2770] loss label: 0.0010
+[18, 2770] loss curve: 0.0095
+[18, 2770] loss seg: 0.0244
+[18, 2770] valid portion: 1.0000
+[18, 3093] training loss: 0.0284
+[18, 3093] loss label: 0.0010
+[18, 3093] loss curve: 0.0097
+[18, 3093] loss seg: 0.0247
+[18, 3093] valid portion: 1.0000
+Epoch time: 805.07s
+[19, 178] training loss: 0.0279
+[19, 178] loss label: 0.0012
+[19, 178] loss curve: 0.0096
+[19, 178] loss seg: 0.0243
+[19, 178] valid portion: 1.0000
+[19, 501] training loss: 0.0277
+[19, 501] loss label: 0.0011
+[19, 501] loss curve: 0.0094
+[19, 501] loss seg: 0.0243
+[19, 501] valid portion: 1.0000
+[19, 824] training loss: 0.0280
+[19, 824] loss label: 0.0011
+[19, 824] loss curve: 0.0096
+[19, 824] loss seg: 0.0245
+[19, 824] valid portion: 1.0000
+[19, 1147] training loss: 0.0281
+[19, 1147] loss label: 0.0011
+[19, 1147] loss curve: 0.0095
+[19, 1147] loss seg: 0.0247
+[19, 1147] valid portion: 1.0000
+[19, 1470] training loss: 0.0284
+[19, 1470] loss label: 0.0010
+[19, 1470] loss curve: 0.0096
+[19, 1470] loss seg: 0.0250
+[19, 1470] valid portion: 1.0000
+[19, 1793] training loss: 0.0279
+[19, 1793] loss label: 0.0009
+[19, 1793] loss curve: 0.0095
+[19, 1793] loss seg: 0.0243
+[19, 1793] valid portion: 1.0000
+[19, 2116] training loss: 0.0280
+[19, 2116] loss label: 0.0011
+[19, 2116] loss curve: 0.0096
+[19, 2116] loss seg: 0.0245
+[19, 2116] valid portion: 1.0000
+[19, 2439] training loss: 0.0287
+[19, 2439] loss label: 0.0013
+[19, 2439] loss curve: 0.0097
+[19, 2439] loss seg: 0.0251
+[19, 2439] valid portion: 1.0000
+[19, 2762] training loss: 0.0283
+[19, 2762] loss label: 0.0011
+[19, 2762] loss curve: 0.0097
+[19, 2762] loss seg: 0.0247
+[19, 2762] valid portion: 1.0000
+[19, 3085] training loss: 0.0281
+[19, 3085] loss label: 0.0009
+[19, 3085] loss curve: 0.0096
+[19, 3085] loss seg: 0.0246
+[19, 3085] valid portion: 1.0000
+Epoch time: 804.48s
+[20, 170] training loss: 0.0278
+[20, 170] loss label: 0.0012
+[20, 170] loss curve: 0.0096
+[20, 170] loss seg: 0.0242
+[20, 170] valid portion: 1.0000
+[20, 493] training loss: 0.0277
+[20, 493] loss label: 0.0010
+[20, 493] loss curve: 0.0093
+[20, 493] loss seg: 0.0244
+[20, 493] valid portion: 1.0000
+[20, 816] training loss: 0.0276
+[20, 816] loss label: 0.0012
+[20, 816] loss curve: 0.0092
+[20, 816] loss seg: 0.0243
+[20, 816] valid portion: 1.0000
+[20, 1139] training loss: 0.0277
+[20, 1139] loss label: 0.0010
+[20, 1139] loss curve: 0.0093
+[20, 1139] loss seg: 0.0244
+[20, 1139] valid portion: 0.9999
+[20, 1462] training loss: 0.0282
+[20, 1462] loss label: 0.0011
+[20, 1462] loss curve: 0.0096
+[20, 1462] loss seg: 0.0247
+[20, 1462] valid portion: 1.0000
+[20, 1785] training loss: 0.0286
+[20, 1785] loss label: 0.0010
+[20, 1785] loss curve: 0.0098
+[20, 1785] loss seg: 0.0249
+[20, 1785] valid portion: 1.0000
+[20, 2108] training loss: 0.0278
+[20, 2108] loss label: 0.0010
+[20, 2108] loss curve: 0.0094
+[20, 2108] loss seg: 0.0244
+[20, 2108] valid portion: 1.0000
+[20, 2431] training loss: 0.0277
+[20, 2431] loss label: 0.0011
+[20, 2431] loss curve: 0.0094
+[20, 2431] loss seg: 0.0243
+[20, 2431] valid portion: 1.0000
+[20, 2754] training loss: 0.0283
+[20, 2754] loss label: 0.0010
+[20, 2754] loss curve: 0.0098
+[20, 2754] loss seg: 0.0246
+[20, 2754] valid portion: 1.0000
+[20, 3077] training loss: 0.0281
+[20, 3077] loss label: 0.0009
+[20, 3077] loss curve: 0.0096
+[20, 3077] loss seg: 0.0246
+[20, 3077] valid portion: 1.0000
+Epoch time: 805.24s
+Files saved at: ./checkpoints/resnet18_bezierlanenet-triple_llamas.
+Tensorboard log at: ./checkpoints/tb_logs/resnet18_bezierlanenet-triple_llamas
