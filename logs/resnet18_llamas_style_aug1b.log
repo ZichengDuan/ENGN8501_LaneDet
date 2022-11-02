@@ -147,6 +147,7 @@ model is  BezierLaneNet(
 Not using distributed mode
 cuda
 There are 58269 in this dataset
+<<<<<<< HEAD
 /root/ENGN8501_LaneDet_/utils/models/lane_detection/laneatt.py:22: UserWarning: Can't complie line nms op for LaneATT. Set verbose=True for load in /utils/csrc/apis.py L9 for details.
 [1, 322] training loss: 0.2361
 [1, 322] loss label: 0.1753
@@ -1170,3 +1171,33 @@ Epoch time: 804.48s
 Epoch time: 805.24s
 Files saved at: ./checkpoints/resnet18_bezierlanenet-triple_llamas.
 Tensorboard log at: ./checkpoints/tb_logs/resnet18_bezierlanenet-triple_llamas
+=======
+/root/ENGN8501_LaneDet/utils/models/lane_detection/laneatt.py:22: UserWarning: Can't complie line nms op for LaneATT. Set verbose=True for load in /utils/csrc/apis.py L9 for details.
+Traceback (most recent call last):
+  File "main_landet.py", line 84, in <module>
+    runner.run()
+  File "/root/ENGN8501_LaneDet/utils/runners/lane_det_trainer.py", line 54, in run
+    for i, data in enumerate(self.dataloader, 0):
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 363, in __next__
+    data = self._next_data()
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 989, in _next_data
+    return self._process_data(data)
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/dataloader.py", line 1014, in _process_data
+    data.reraise()
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/_utils.py", line 395, in reraise
+    raise self.exc_type(msg)
+TypeError: Caught TypeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/_utils/worker.py", line 185, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/opt/conda/envs/pad/lib/python3.6/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/root/ENGN8501_LaneDet/utils/datasets/lane_as_bezier.py", line 70, in __getitem__
+    img, target = self.transforms(img, target)
+  File "/root/ENGN8501_LaneDet/utils/transforms/transforms.py", line 325, in __call__
+    image, target = t(image, target)
+TypeError: __call__() missing 1 required positional argument: 'target'
+
+>>>>>>> 377d819135e9595aba8bc3c36c8fcb59cdc0f1d2

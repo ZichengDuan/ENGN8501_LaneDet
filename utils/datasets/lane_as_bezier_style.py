@@ -64,8 +64,8 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
                 target = {'keypoints': self.beziers[index]}
             if self.transfer_image_dir is not None:
                 transfer_img = Image.open(self.transfered_images[index]).convert('RGB')
-        # crop the image for garauntee two images will be same
-                img, transfer_img = self._pre_process(img, transfer_img)
+     
+                transfer_img = self._pre_process(transfer_img)
         # Transforms
         if self.transforms is not None:
             if self.transfer_image_dir is None or self.test != 0:
@@ -138,19 +138,38 @@ class _BezierLaneDataset_style(torchvision.datasets.VisionDataset):
 
         return target
     
-    def _pre_process(self, img0, img1):
-        img_list = [img0, img1]
-        w0, h0 = img0.size 
-        w1, h1 = img1.size 
-        if w0 != w1:
-            idx = np.argmax(np.array([w0, w1]))
-            diff = abs(w0 - w1)
-            img_list[idx] = img_list[idx].crop((diff, 0, *img_list[idx].size))
-        if h0 != h1:
-            idx = np.argmax(np.array([h0, h1]))
-            diff = abs(h0 - h1)
-            img_list[idx] = img_list[idx].crop((0, diff, *img_list[idx].size))
-        return img_list[0], img_list[1]
+    def _pre_process(self, transfer_img):
+        w, h = transfer_img.size 
+        if w < self.original_size[0]:
+            transfer_img = transfer_img.resize((self.original_size[0], h), Image.ANTIALIAS)
+        elif w > self.original_size[0]:
+            diff = w - self.original_size[0]
+            transfer_img = transfer_img.crop((diff, 0, w, h))
+
+        if h < self.original_size[1]:
+            transfer_img = transfer_img.resize((self.original_size[0], self.original_size[1]),Image.ANTIALIAS)
+        elif h > self.original_size[1]:
+            diff = h - self.original_size[1]
+            transfer_img = transfer_img.crop((0, diff, w, h))
+        return transfer_img
+
+
+        
+            
+            
+        
+        # img_list = [img0, img1]
+        # w0, h0 = img0.size 
+        # w1, h1 = img1.size 
+        # if w0 != w1:
+        #     idx = np.argmax(np.array([w0, w1]))
+        #     diff = abs(w0 - w1)
+        #     img_list[idx] = img_list[idx].crop((diff, 0, *img_list[idx].size))
+        # if h0 != h1:
+        #     idx = np.argmax(np.array([h0, h1]))
+        #     diff = abs(h0 - h1)
+        #     img_list[idx] = img_list[idx].crop((0, diff, *img_list[idx].size))
+        # return img_list[0], img_list[1]
             
     
 
@@ -169,6 +188,7 @@ class TuSimpleAsBezier_style(_BezierLaneDataset_style):
         self.output_prefix = 'clips'
         self.output_suffix = '.jpg'
         self.image_suffix = '.jpg'
+        self.original_size = (1278, 720)
         if self.style == 'winter':
             self.transfer_image_dir = os.path.join(root, 'winter_style')
         elif self.style == 'summer':
@@ -192,6 +212,7 @@ class LLAMAS_AsBezier_style(_BezierLaneDataset_style):
         self.output_prefix = './output'
         self.output_suffix = '.lines.txt'
         self.image_suffix = '.png'
+        self.original_size = (1276, 717)
         if not os.path.exists(self.output_prefix):
             os.makedirs(self.output_prefix)
         if self.style == 'winter':

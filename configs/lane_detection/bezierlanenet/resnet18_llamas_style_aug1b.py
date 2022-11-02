@@ -12,7 +12,7 @@ with import_from('./'):
 
 
 train = dict(
-    exp_name='resnet18_bezierlanenet-triple_llamas',
+    exp_name='resnet18_bezierlanenet-triple-winter_llamas',
     workers=10,
     batch_size=18,
     checkpoint=None,
@@ -34,10 +34,10 @@ train = dict(
 )
 
 test = dict(
-    exp_name='resnet18_bezierlanenet-triple_llamas',
+    exp_name='resnet18_bezierlanenet-triple-winter_llamas',
     workers=0,
     batch_size=1,
-    checkpoint='./checkpoints/resnet18_bezierlanenet-triple_llamas/model.pt',
+    checkpoint='./checkpoints/resnet18_bezierlanenet-triple-winter_llamas/model.pt',
     # Device args
     device='cuda',
 

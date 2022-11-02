@@ -7,4 +7,9 @@ resnet18_bezierlanenet_tusimple_winter-aug2: 0.34586606928896696
 resnet18_bezierlanenet_tusimple_winter-aug2: 0.34456625928588613
 resnet18_bezierlanenet_tusimple_winter-aug2: 0.9530442299133826
 resnet18_bezierlanenet_tusimple-largeconv: 0.9558353445619743
+<<<<<<< HEAD
 resnet18_bezierlanenet-triple_llamas: 0.9581140897545595
+=======
+resnet18_bezierlanenet-triple-winter_llamas: 0.9580372956919367
+>>>>>>> 377d819135e9595aba8bc3c36c8fcb59cdc0f1d2
+resnet18_bezierlanenet-aug2-mask-adamw_llamas: 0.957014957816512

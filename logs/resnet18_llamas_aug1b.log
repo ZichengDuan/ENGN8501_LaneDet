@@ -1,0 +1,354 @@
+Loaded torchvision ImageNet pre-trained weights V1.
+model is  BezierLaneNet(
+  (backbone): IntermediateLayerGetter(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (dilated_blocks): Sequential(
+    (0): DilatedBottleneck(
+      (conv1): Sequential(
+        (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv2): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(4, 4), dilation=(4, 4))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv3): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU(inplace=True)
+    )
+    (1): DilatedBottleneck(
+      (conv1): Sequential(
+        (0): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv2): Sequential(
+        (0): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(8, 8), dilation=(8, 8))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (conv3): Sequential(
+        (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (simple_flip_2d): FeatureFlipFusion(
+    (proj1): Sequential(
+      (0): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (proj2_conv): DCN_v2_Ref(
+      (conv_offset): Conv2d(512, 27, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (proj2_norm): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (aggregator): AvgPool2d(kernel_size=(23, 1), stride=1, padding=0)
+  (regression_head): ConvProjection_1D(
+    (hidden_layers): ModuleList(
+      (0): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+      (1): Conv1d(256, 256, kernel_size=(3,), stride=(1,), padding=(1,))
+    )
+    (hidden_norms): ModuleList(
+      (0): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (proj_classification): Conv1d(256, 1, kernel_size=(1,), stride=(1,))
+  (proj_regression): Conv1d(256, 8, kernel_size=(1,), stride=(1,))
+  (segmentation_head): SimpleSegHead(
+    (conv): ConvBNReLU(
+      (conv): Conv2d(256, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU()
+    )
+    (conv_out): Conv2d(64, 1, kernel_size=(1, 1), stride=(1, 1), bias=False)
+  )
+  (attn1): attention(
+    (make_qkv): Sequential(
+      (0): Conv2d(256, 768, kernel_size=(1, 1), stride=(1, 1))
+      (1): Conv2d(768, 768, kernel_size=(11, 11), stride=(1, 1), padding=(5, 5), groups=768)
+    )
+    (relu): ReLU()
+    (linear): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (softmax): Softmax(dim=-1)
+  )
+  (attn2): attention(
+    (make_qkv): Sequential(
+      (0): Conv2d(256, 768, kernel_size=(1, 1), stride=(1, 1))
+      (1): Conv2d(768, 768, kernel_size=(11, 11), stride=(1, 1), padding=(5, 5), groups=768)
+    )
+    (relu): ReLU()
+    (linear): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (softmax): Softmax(dim=-1)
+  )
+)
+Not using distributed mode
+cuda
+There are 58269 in this dataset
+/root/ENGN8501_LaneDet/utils/models/lane_detection/laneatt.py:22: UserWarning: Can't complie line nms op for LaneATT. Set verbose=True for load in /utils/csrc/apis.py L9 for details.
+[1, 290] training loss: 0.2012
+[1, 290] loss label: 0.1383
+[1, 290] loss curve: 0.1302
+[1, 290] loss seg: 0.0762
+[1, 290] valid portion: 0.9965
+[1, 581] training loss: 0.1075
+[1, 581] loss label: 0.0628
+[1, 581] loss curve: 0.0668
+[1, 581] loss seg: 0.0459
+[1, 581] valid portion: 1.0000
+[1, 872] training loss: 0.0817
+[1, 872] loss label: 0.0452
+[1, 872] loss curve: 0.0479
+[1, 872] loss seg: 0.0390
+[1, 872] valid portion: 1.0000
+[1, 1163] training loss: 0.0726
+[1, 1163] loss label: 0.0337
+[1, 1163] loss curve: 0.0419
+[1, 1163] loss seg: 0.0364
+[1, 1163] valid portion: 0.9999
+[1, 1454] training loss: 0.0661
+[1, 1454] loss label: 0.0260
+[1, 1454] loss curve: 0.0374
+[1, 1454] loss seg: 0.0348
+[1, 1454] valid portion: 1.0000
+[1, 1745] training loss: 0.0649
+[1, 1745] loss label: 0.0212
+[1, 1745] loss curve: 0.0372
+[1, 1745] loss seg: 0.0341
+[1, 1745] valid portion: 1.0000
+[1, 2036] training loss: 0.0597
+[1, 2036] loss label: 0.0188
+[1, 2036] loss curve: 0.0330
+[1, 2036] loss seg: 0.0331
+[1, 2036] valid portion: 1.0000
+[1, 2327] training loss: 0.0574
+[1, 2327] loss label: 0.0166
+[1, 2327] loss curve: 0.0312
+[1, 2327] loss seg: 0.0327
+[1, 2327] valid portion: 1.0000
+[1, 2618] training loss: 0.0583
+[1, 2618] loss label: 0.0148
+[1, 2618] loss curve: 0.0322
+[1, 2618] loss seg: 0.0327
+[1, 2618] valid portion: 1.0000
+[1, 2909] training loss: 0.0569
+[1, 2909] loss label: 0.0132
+[1, 2909] loss curve: 0.0315
+[1, 2909] loss seg: 0.0322
+[1, 2909] valid portion: 1.0000
+Epoch time: 709.41s
+[2, 286] training loss: 0.0559
+[2, 286] loss label: 0.0128
+[2, 286] loss curve: 0.0304
+[2, 286] loss seg: 0.0322
+[2, 286] valid portion: 1.0000
+[2, 577] training loss: 0.0545
+[2, 577] loss label: 0.0118
+[2, 577] loss curve: 0.0297
+[2, 577] loss seg: 0.0315
+[2, 577] valid portion: 1.0000
+[2, 868] training loss: 0.0522
+[2, 868] loss label: 0.0114
+[2, 868] loss curve: 0.0276
+[2, 868] loss seg: 0.0313
+[2, 868] valid portion: 1.0000
+[2, 1159] training loss: 0.0534
+[2, 1159] loss label: 0.0107
+[2, 1159] loss curve: 0.0290
+[2, 1159] loss seg: 0.0311
+[2, 1159] valid portion: 1.0000
+[2, 1450] training loss: 0.0531
+[2, 1450] loss label: 0.0099
+[2, 1450] loss curve: 0.0285
+[2, 1450] loss seg: 0.0314
+[2, 1450] valid portion: 1.0000
+[2, 1741] training loss: 0.0511
+[2, 1741] loss label: 0.0090
+[2, 1741] loss curve: 0.0268
+[2, 1741] loss seg: 0.0312
+[2, 1741] valid portion: 1.0000
+[2, 2032] training loss: 0.0502
+[2, 2032] loss label: 0.0084
+[2, 2032] loss curve: 0.0261
+[2, 2032] loss seg: 0.0309
+[2, 2032] valid portion: 1.0000
+[2, 2323] training loss: 0.0484
+[2, 2323] loss label: 0.0080
+[2, 2323] loss curve: 0.0248
+[2, 2323] loss seg: 0.0304
+[2, 2323] valid portion: 1.0000
+[2, 2614] training loss: 0.0491
+[2, 2614] loss label: 0.0082
+[2, 2614] loss curve: 0.0251
+[2, 2614] loss seg: 0.0309
+[2, 2614] valid portion: 1.0000
+[2, 2905] training loss: 0.0514
+[2, 2905] loss label: 0.0076
+[2, 2905] loss curve: 0.0274
+[2, 2905] loss seg: 0.0309
+[2, 2905] valid portion: 1.0000
+Epoch time: 712.41s
+[3, 282] training loss: 0.0460
+[3, 282] loss label: 0.0052
+[3, 282] loss curve: 0.0228
+[3, 282] loss seg: 0.0302
+[3, 282] valid portion: 0.9999
+[3, 573] training loss: 0.0468
+[3, 573] loss label: 0.0054
+[3, 573] loss curve: 0.0234
+[3, 573] loss seg: 0.0304
+[3, 573] valid portion: 1.0000
+[3, 864] training loss: 0.0468
+[3, 864] loss label: 0.0047
+[3, 864] loss curve: 0.0240
+[3, 864] loss seg: 0.0298
+[3, 864] valid portion: 1.0000
+[3, 1155] training loss: 0.0462
+[3, 1155] loss label: 0.0047
+[3, 1155] loss curve: 0.0232
+[3, 1155] loss seg: 0.0301
+[3, 1155] valid portion: 1.0000
+[3, 1446] training loss: 0.0459
+[3, 1446] loss label: 0.0050
+[3, 1446] loss curve: 0.0229
+[3, 1446] loss seg: 0.0299
+[3, 1446] valid portion: 1.0000
+[3, 1737] training loss: 0.0461
+[3, 1737] loss label: 0.0053
+[3, 1737] loss curve: 0.0233
+[3, 1737] loss seg: 0.0298
+[3, 1737] valid portion: 1.0000
+[3, 2028] training loss: 0.0461
+[3, 2028] loss label: 0.0047
+[3, 2028] loss curve: 0.0233
+[3, 2028] loss seg: 0.0298
+[3, 2028] valid portion: 1.0000
+[3, 2319] training loss: 0.0461
+[3, 2319] loss label: 0.0045
+[3, 2319] loss curve: 0.0231
+[3, 2319] loss seg: 0.0301
+[3, 2319] valid portion: 0.9999
+[3, 2610] training loss: 0.0444
+[3, 2610] loss label: 0.0045
+[3, 2610] loss curve: 0.0220
+[3, 2610] loss seg: 0.0293
+[3, 2610] valid portion: 1.0000
+[3, 2901] training loss: 0.0438
+[3, 2901] loss label: 0.0044
+[3, 2901] loss curve: 0.0211
+[3, 2901] loss seg: 0.0298
+[3, 2901] valid portion: 1.0000
+Epoch time: 712.32s
+[4, 278] training loss: 0.0436
+[4, 278] loss label: 0.0047
+[4, 278] loss curve: 0.0214
+[4, 278] loss seg: 0.0290
+[4, 278] valid portion: 1.0000
+[4, 569] training loss: 0.0437
+[4, 569] loss label: 0.0045
+[4, 569] loss curve: 0.0212
+[4, 569] loss seg: 0.0294
+[4, 569] valid portion: 1.0000
+[4, 860] training loss: 0.0431
+[4, 860] loss label: 0.0041
+[4, 860] loss curve: 0.0207
+[4, 860] loss seg: 0.0292
+[4, 860] valid portion: 1.0000
+[4, 1151] training loss: 0.0433
+[4, 1151] loss label: 0.0042
+[4, 1151] loss curve: 0.0210
+[4, 1151] loss seg: 0.0292
+[4, 1151] valid portion: 1.0000
+[4, 1442] training loss: 0.0438
+[4, 1442] loss label: 0.0041
+[4, 1442] loss curve: 0.0214
+[4, 1442] loss seg: 0.0293
+[4, 1442] valid portion: 1.0000
+[4, 1733] training loss: 0.0428
+[4, 1733] loss label: 0.0041
+[4, 1733] loss curve: 0.0204
+[4, 1733] loss seg: 0.0292
+[4, 1733] valid portion: 1.0000
+[4, 2024] training loss: 0.0424
+[4, 2024] loss label: 0.0045
+[4, 2024] loss curve: 0.0202
+[4, 2024] loss seg: 0.0289
+[4, 2024] valid portion: 1.0000
+[4, 2315] training loss: 0.0417
+[4, 2315] loss label: 0.0039
+[4, 2315] loss curve: 0.0198
+[4, 2315] loss seg: 0.0287
+[4, 2315] valid portion: 1.0000
+[4, 2606] training loss: 0.0413
+[4, 2606] loss label: 0.0039
+[4, 2606] loss curve: 0.0191
+[4, 2606] loss seg: 0.0290
+[4, 2606] valid portion: 1.0000
+[4, 2897] training loss: 0.0423
+[4, 2897] loss label: 0.0037
+[4, 2897] loss curve: 0.0204
+[4, 2897] loss seg: 0.0287
+[4, 2897] valid portion: 1.0000
+Epoch time: 713.03s

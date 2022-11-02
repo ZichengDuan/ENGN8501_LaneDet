@@ -6,5 +6,5 @@ dataset = dict(
     root=LLAMAS_ROOT,
     order=3,
     aux_segmentation=True,
-    style='comic'
+    style='winter'
 )
