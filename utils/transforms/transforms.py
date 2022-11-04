@@ -305,7 +305,6 @@ class RandomMasking_TwoImages(object):
         img1 = self.mask(img1, seed)
         img2 = self.mask(img2, seed)
         return img1, img2, target
-    
 
 @TRANSFORMS.register()
 class Compose(object):

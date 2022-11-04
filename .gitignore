@@ -1,3 +1,6 @@
 /checkpoints
 /output
 /configs/__pycache__
+/vis_label
+/test_tusimple_vis
+/culane_vis

@@ -168,7 +168,8 @@ class LaneDetVideo(BaseVideoVisualizer, LaneDetVisualizer):
                                                        keypoints=keypoints,
                                                        control_points=cps,
                                                        mask_colors=None,
-                                                       keypoint_color=self._cfg['keypoint_color'],
+                                                    #    keypoint_color=self._cfg['keypoint_color'],
+                                                       keypoint_color = (0, 255, 0),
                                                        std=None, mean=None, style=self._cfg['style'])
             results = results[..., [2, 1, 0]]
             for j in range(results.shape[0]):

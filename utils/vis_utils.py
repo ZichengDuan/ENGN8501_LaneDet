@@ -111,7 +111,7 @@ def lane_detection_visualize_batched(images, masks=None, keypoints=None,
         images = images.clamp_(0.0, 1.0) * 255.0
         images = images[..., [2, 1, 0]].cpu().numpy().astype(np.uint8)
         if keypoint_color is None:
-            keypoint_color = [0, 0, 0]  # Black (sits well with lane colors)
+            keypoint_color = [0, 255, 0]  # Black (sits well with lane colors)
         else:
             keypoint_color = keypoint_color[::-1]  # To BGR
 

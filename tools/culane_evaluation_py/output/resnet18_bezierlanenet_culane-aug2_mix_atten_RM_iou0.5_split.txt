@@ -1,0 +1,54 @@
+file: ./output/out0_normal.txt
+tp: 28922 fp: 3031 fn: 3855
+precision: 0.905142
+recall: 0.882387
+Fmeasure: 0.893620
+
+file: ./output/out1_crowd.txt
+tp: 18882 fp: 6315 fn: 9121
+precision: 0.749375
+recall: 0.674285
+Fmeasure: 0.709850
+
+file: ./output/out2_hlight.txt
+tp: 964 fp: 436 fn: 721
+precision: 0.688571
+recall: 0.572107
+Fmeasure: 0.624959
+
+file: ./output/out3_shadow.txt
+tp: 1880 fp: 799 fn: 996
+precision: 0.701754
+recall: 0.653686
+Fmeasure: 0.676868
+
+file: ./output/out4_noline.txt
+tp: 5313 fp: 4214 fn: 8708
+precision: 0.557678
+recall: 0.378932
+Fmeasure: 0.451249
+
+file: ./output/out5_arrow.txt
+tp: 2573 fp: 407 fn: 609
+precision: 0.863423
+recall: 0.808611
+Fmeasure: 0.835118
+
+file: ./output/out6_curve.txt
+tp: 681 fp: 309 fn: 631
+precision: 0.687879
+recall: 0.519055
+Fmeasure: 0.591659
+
+file: ./output/out7_cross.txt
+tp: 0 fp: 1111 fn: 0
+precision: 0.000000
+recall: 0.000000
+Fmeasure: 0.000000
+
+file: ./output/out8_night.txt
+tp: 13115 fp: 4588 fn: 7915
+precision: 0.740835
+recall: 0.623633
+Fmeasure: 0.677200
+

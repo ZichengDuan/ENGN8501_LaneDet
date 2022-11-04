@@ -1,6 +1,6 @@
 file: ./output/out0_normal.txt
-tp: 28894 fp: 2575 fn: 3883
-precision: 0.918173
-recall: 0.881533
-Fmeasure: 0.899480
+tp: 29561 fp: 2449 fn: 3216
+precision: 0.923493
+recall: 0.901882
+Fmeasure: 0.912560
 

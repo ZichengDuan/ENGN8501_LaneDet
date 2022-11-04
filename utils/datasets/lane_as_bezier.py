@@ -69,11 +69,7 @@ class _BezierLaneDataset(torchvision.datasets.VisionDataset):
         if self.transforms is not None:
             img, target = self.transforms(img, target)
 
-        import cv2
-        np_img = np.array(img * 255, dtype=np.uint8)
-        cv2.imwrite(f"label_vis{index}.jpg", np_img.transpose(1, 2, 0))
-        print()
-        
+
         
         if self.test == 0:
             target = self._post_process(target)

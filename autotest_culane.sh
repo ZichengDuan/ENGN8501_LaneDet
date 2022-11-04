@@ -1,5 +1,5 @@
 #!/bin/bash
-backend="python"  # or python
+backend="cpp"  # or python
 echo experiment name: $1
 echo status: $2
 echo save dir: $3

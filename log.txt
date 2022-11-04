@@ -12,3 +12,9 @@ resnet18_bezierlanenet_culane-aug2_mixall: 72.43768984731749
 resnet18_bezierlanenet_culane-aug2_mixall_22: 73.18398647424672
 resnet18_bezierlanenet_culane-aug_atten_1101: 73.18398647424672
 resnet18_bezierlanenet_culane-aug2_atten_1101: 73.18398647424672
+resnet18_bezierlanenet_culane-aug2: 72.37429644950365
+resnet18_bezierlanenet_culane-aug2_mix_atten_RM: 72.90375253243022
+resnet34_bezierlanenet_culane-aug2: 75.27927057544834
+resnet34_bezierlanenet_culane-aug2: 75.27927057544834
+resnet18_bezierlanenet_tusimple-aug2_mix_attn_RM: 0.9558390888706263
+resnet18_bezierlanenet_tusimple-aug2_mix_attn_RM_1104: 0.9594036707062367
