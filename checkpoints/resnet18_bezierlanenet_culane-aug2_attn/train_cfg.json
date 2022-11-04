@@ -1,0 +1,243 @@
+{
+    "dataset": {
+        "name": "CULaneAsBezier_style",
+        "image_set": "train",
+        "root": "\/root\/workspace\/data\/culane",
+        "order": 3,
+        "aux_segmentation": true,
+        "style": "winter"
+    },
+    "train_augmentation": {
+        "name": "Compose_TwoImages",
+        "transforms": [
+            {
+                "name": "RandomAffine_TwoImages",
+                "degrees": [
+                    -10,
+                    10
+                ],
+                "scale": [
+                    0.8,
+                    1.2
+                ],
+                "translate": [
+                    50,
+                    20
+                ],
+                "ignore_x": null
+            },
+            {
+                "name": "RandomHorizontalFlip_TwoImages",
+                "flip_prob": 0.5,
+                "ignore_x": null
+            },
+            {
+                "name": "Resize_TwoImages",
+                "size_image": [
+                    288,
+                    800
+                ],
+                "size_label": [
+                    288,
+                    800
+                ],
+                "ignore_x": null
+            },
+            {
+                "name": "ColorJitter_TwoImages",
+                "brightness": 0.3,
+                "contrast": 0.3,
+                "saturation": 0.3,
+                "hue": 0.15
+            },
+            {
+                "name": "ToTensor_TwoImages"
+            },
+            {
+                "name": "Normalize_TwoImages",
+                "mean": [
+                    0.485,
+                    0.456,
+                    0.406
+                ],
+                "std": [
+                    0.229,
+                    0.224,
+                    0.225
+                ],
+                "normalize_target": true,
+                "ignore_x": null
+            },
+            {
+                "name": "RandomMasking_TwoImages"
+            }
+        ]
+    },
+    "test_augmentation": {
+        "name": "Compose",
+        "transforms": [
+            {
+                "name": "Resize",
+                "size_image": [
+                    288,
+                    800
+                ],
+                "size_label": [
+                    288,
+                    800
+                ]
+            },
+            {
+                "name": "ToTensor"
+            },
+            {
+                "name": "Normalize",
+                "mean": [
+                    0.485,
+                    0.456,
+                    0.406
+                ],
+                "std": [
+                    0.229,
+                    0.224,
+                    0.225
+                ]
+            }
+        ]
+    },
+    "loss": {
+        "name": "HungarianBezierLoss",
+        "weight": [
+            0.4,
+            1
+        ],
+        "weight_seg": [
+            0.4,
+            1
+        ],
+        "curve_weight": 1,
+        "label_weight": 0.1,
+        "seg_weight": 0.75,
+        "alpha": 0.8,
+        "num_sample_points": 100,
+        "bezier_order": 3,
+        "k": 9,
+        "reduction": "mean",
+        "ignore_index": 255
+    },
+    "optimizer": {
+        "name": "torch_optimizer",
+        "torch_optim_class": "Adam",
+        "lr": 0.0006,
+        "parameters": [
+            {
+                "params": "conv_offset",
+                "lr": 5.9999999999999995e-5
+            },
+            {
+                "params": "__others__"
+            }
+        ]
+    },
+    "lr_scheduler": {
+        "name": "CosineAnnealingLRWrapper",
+        "epochs": 36
+    },
+    "train": {
+        "exp_name": "resnet18_bezierlanenet_culane-aug2_mixall",
+        "workers": 10,
+        "batch_size": 20,
+        "checkpoint": null,
+        "world_size": 0,
+        "dist_url": "env:\/\/",
+        "device": "cuda",
+        "val_num_steps": 0,
+        "save_dir": ".\/checkpoints",
+        "input_size": [
+            288,
+            800
+        ],
+        "original_size": [
+            590,
+            1640
+        ],
+        "num_classes": null,
+        "num_epochs": 36,
+        "collate_fn": "pair_collate_fn",
+        "seg": false,
+        "extra_samples": 2,
+        "state": 0,
+        "mixed_precision": true,
+        "distributed": false,
+        "validation": false,
+        "exp_dir": ".\/checkpoints\/resnet18_bezierlanenet_culane-aug2_mixall"
+    },
+    "test": {
+        "exp_name": "resnet18_bezierlanenet_culane-aug2_mixall",
+        "workers": 0,
+        "batch_size": 1,
+        "checkpoint": ".\/checkpoints\/resnet18_bezierlanenet_culane-aug2_mixall\/model.pt",
+        "device": "cuda",
+        "save_dir": ".\/checkpoints",
+        "seg": false,
+        "gap": 20,
+        "ppl": 18,
+        "thresh": null,
+        "collate_fn": "dict_collate_fn",
+        "input_size": [
+            288,
+            800
+        ],
+        "original_size": [
+            590,
+            1640
+        ],
+        "max_lane": 4,
+        "dataset_name": "culane"
+    },
+    "model": {
+        "name": "BezierLaneNet",
+        "image_height": 288,
+        "num_regression_parameters": 8,
+        "thresh": 0.95,
+        "local_maximum_window_size": 9,
+        "backbone_cfg": {
+            "name": "predefined_resnet_backbone",
+            "backbone_name": "resnet18",
+            "return_layer": "layer3",
+            "pretrained": true,
+            "replace_stride_with_dilation": [
+                false,
+                false,
+                false
+            ]
+        },
+        "reducer_cfg": null,
+        "dilated_blocks_cfg": {
+            "name": "predefined_dilated_blocks",
+            "in_channels": 256,
+            "mid_channels": 64,
+            "dilations": [
+                4,
+                8
+            ]
+        },
+        "feature_fusion_cfg": {
+            "name": "FeatureFlipFusion",
+            "channels": 256
+        },
+        "head_cfg": {
+            "name": "ConvProjection_1D",
+            "num_layers": 2,
+            "in_channels": 256,
+            "bias": true,
+            "k": 3
+        },
+        "aux_seg_head_cfg": {
+            "name": "SimpleSegHead",
+            "in_channels": 256,
+            "mid_channels": 64,
+            "num_classes": 1
+        }
+    }
+}
