@@ -54,7 +54,7 @@ test = dict(
 )
 
 model = dict(
-    name='BezierLaneNet',
+    name='BezierLaneNet_LKEA',
     image_height=360,
     num_regression_parameters=8,  # 3 x 2 + 2 = 8 (Cubic Bezier Curve)
 

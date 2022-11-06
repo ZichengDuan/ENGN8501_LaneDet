@@ -37,8 +37,5 @@ train_augmentation = dict(
             normalize_target=True,
             ignore_x=None
         ),
-        dict(
-            name="RandomMasking"
-        )
     ]
 )
