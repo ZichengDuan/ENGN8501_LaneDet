@@ -1,4 +1,4 @@
-/checkpoints/*/*.pt
+# /checkpoints/*/*.pt
 /output
 /configs/__pycache__
 /vis_label
