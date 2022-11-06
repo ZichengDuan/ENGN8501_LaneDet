@@ -14,19 +14,24 @@ We directly borrow the same training command and configuration to train the Béz
 #### On TuSimple dataset:
 ##### Training from scratch
 Train: 
+
 `python main_landet.py --train --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA.py`
 
 Test:
+
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA.py`
 
 Run official script to obtain score:
+
 `./autotest_tusimple.sh resnet18_bezierlanenet_tusimple_LKEA_RM test checkpoints`
 
 ##### Inference on trained model
 Infer/Test:
+
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA_pretrained.py`
 
 Run official script to obtain pretrained model score:
+
 `./autotest_tusimple.sh resnet18_bezierlanenet_tusimple_RM_LKEA_pretrained test checkpoints`
 
 
@@ -34,9 +39,11 @@ Run official script to obtain pretrained model score:
 #### On CULane dataset:
 ##### Training from scratch
 Training: 
+
 `python main_landet.py --train --config=configs/lane_detection/bezierlanenet/resnet18_culane_RM_LKEA.py"`
 
 Testing:
+
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_culane_RM_LKEA.py"`
 
 Run official script to obtain score:
@@ -45,19 +52,24 @@ Run official script to obtain score:
 #### On LLAMAS dataset:
 ##### Training from scratch
 Train: 
+
 `python main_landet.py --train --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA.py`
 
 Validation:
+
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA.py`
 
 Run official script to obtain score:
+
 `./autotest_llamas.sh resnet18_bezierlanenet_llamas_LKEA_RM test checkpoints`
 
 ##### Inference on trained model
 Infer/Val:
+
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA_pretrained.py`
 
 Run official script to obtain pretrained model score:
+
 `./autotest_llamas.sh resnet18_bezierlanenet_llamas_RM_LKEA_pretrained test checkpoints`
 
 
