@@ -1,8 +1,11 @@
-# 2022 ANU ENGN8501 Group Project code repository
-This reporsitory is build upon PytorchAutoDrive framework, we conduct all the exmpeiments based on this framwork. 
+# ANU ENGN8501: Advaced Topics in Computer Vision group project code repository
 
-### Preparation
-Please follow the dataset and code intructions provided in: [INSTALL.md](docs/INSTALL.md). Then follow the instructions in [DATASET.md](docs/DATASET.md) to set up datasets.
+***Authored by**:* Chenhui Gou u7194588, Zicheng Duan u7170273, Yunxiang Liu u7191378
+
+This reporsitory is built upon [PytorchAutoDrive](https://github.com/voldemortX/pytorch-auto-drive/) framework, we conduct all the exmpeiments based on this framwork. 
+
+### Preparation 
+Please follow the dataset and code intructions provided in: [INSTALL.md](docs/INSTALL.md). Then follow the instructions in [DATASET.md](docs/DATASET.md) to set up datasets. *THIS IS VERY IMPORTANT!*
 
 ### Training and Inferences.
 We directly borrow the same training command and configuration to train the BézierLaneNet. However, we made specific modifications to fit our design. You can follow the steps below to reproduce our main experiments.
@@ -10,17 +13,17 @@ We directly borrow the same training command and configuration to train the Béz
 
 #### On TuSimple dataset:
 ##### Training from scratch
-Training: 
+Train: 
 `python main_landet.py --train --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA.py`
 
-Testing:
+Test:
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA.py`
 
 Run official script to obtain score:
 `./autotest_tusimple.sh resnet18_bezierlanenet_tusimple_LKEA_RM test checkpoints`
 
 ##### Inference on trained model
-Infering/Testing:
+Infer/Test:
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_tusimple_RM_LKEA_pretrained.py`
 
 Run official script to obtain pretrained model score:
@@ -41,17 +44,17 @@ Run official script to obtain score:
 
 #### On LLAMAS dataset:
 ##### Training from scratch
-Training: 
+Train: 
 `python main_landet.py --train --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA.py`
 
-Testing:
+Validation:
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA.py`
 
 Run official script to obtain score:
 `./autotest_llamas.sh resnet18_bezierlanenet_llamas_LKEA_RM test checkpoints`
 
 ##### Inference on trained model
-Infering/Testing:
+Infer/Val:
 `python main_landet.py --test --config=configs/lane_detection/bezierlanenet/resnet18_llamas_RM_LKEA_pretrained.py`
 
 Run official script to obtain pretrained model score:
