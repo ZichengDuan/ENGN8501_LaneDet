@@ -60,7 +60,7 @@ class BezierLaneNet_LKEA(BezierBaseNet):
                  num_regression_parameters=8,
                  thresh=0.5,
                  local_maximum_window_size=9):
-        super(BezierLaneNet, self).__init__(thresh, local_maximum_window_size)
+        super(BezierLaneNet_LKEA, self).__init__(thresh, local_maximum_window_size)
         global_stride = 16
         branch_channels = 256
 
