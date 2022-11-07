@@ -2,7 +2,7 @@
 
 ***Authored by**:* Chenhui Gou u7194588, Zicheng Duan u7170273, Yunxiang Liu u7191378
 
-This reporsitory is built upon [PytorchAutoDrive](https://github.com/voldemortX/pytorch-auto-drive/) framework, we conduct all the exmpeiments based on this framwork. 
+This reporsitory is developed based on [PytorchAutoDrive](https://github.com/voldemortX/pytorch-auto-drive/) framework, we conduct all the exmpeiments based on this framwork. 
 
 ### Preparation 
 Please follow the dataset and code intructions provided in: [INSTALL.md](docs/INSTALL.md). Then follow the instructions in [DATASET.md](docs/DATASET.md) to set up datasets. *THIS IS VERY IMPORTANT!*
